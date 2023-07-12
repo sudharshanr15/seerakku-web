@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities{
+    .section-container{
+        @apply p-md lg:p-xxl;
+    }
+
+    .button-primary{
+        @apply bg-primary hover:bg-accent text-dark-text text-subheading rounded-full py-md px-large transition-colors;
+    }
+}
