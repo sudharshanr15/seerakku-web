@@ -72,6 +72,12 @@ module.exports = {
           lineHeight: "120%",
           fontWeight: 700
         }],
+      },
+      spacing: {
+        "md": "1rem",
+        "large": "1.5rem",
+        "xl": "2.625rem",
+        "xxl": "4.5rem",
       }
     },
   },
