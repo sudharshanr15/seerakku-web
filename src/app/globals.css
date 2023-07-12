@@ -9,6 +9,12 @@
     src: url("/fonts/klima/klima-regular.otf") format('opentype');
 }
 
+@layer base{
+    html{
+        @apply bg-surface-color;
+    }
+}
+
 @layer utilities{
     .section-container{
         @apply p-md lg:p-xxl;
