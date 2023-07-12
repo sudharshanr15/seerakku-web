@@ -12,7 +12,9 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'squada-one': ["Squada One"]
+        'sans': ['Klima', ...defaultTheme.fontFamily.sans],
+        'squada-one': ["Squada One", ...defaultTheme.fontFamily.sans],
+        'klima': ["Klima", ...defaultTheme.fontFamily.sans]
       },
       colors: {
         "primary": {
