@@ -9,16 +9,16 @@ function Sponsers() {
   return (
     <div className="bg-[#FDFAF3] h-full">
       <div className="pt-[5%]">
-        <h1 className="text-center text-black text-6xl squada-regular ">
+        <h1 className="text-center text-black text-heading-3 lg:text-heading-2 font-squada-one ">
           Our Sponsors
         </h1>
         <div className="flex justify-center pt-[3%] flex-wrap">
           <Image src={Kauvery} />
         </div>
-        <h1 className="text-center text-black text-6xl squada-regular mt-[3%]">
+        <h1 className="text-center text-black text-heading-3 lg:text-heading-2 font-squada-one mt-[3%]">
           Our Partners
         </h1>
-        <div className="flex justify-evenly pt-[3%] flex-wrap">
+        <div className="flex justify-evenly px-10 py-10 flex-wrap">
           <Image src={growWithUs} />
           <Image src={Neulancers} />
           <Image src={Pasumai} />

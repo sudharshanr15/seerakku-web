@@ -38,7 +38,7 @@ export default function App() {
         </Swiper>
       </div>
 
-      <div className="h-[600px] w-full bg-carousel-bg bg-cover"></div>
+      <div className="h-[700px] w-full bg-carousel-bg bg-cover"></div>
     </div>
   );
 }
