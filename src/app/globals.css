@@ -20,6 +20,28 @@
         @apply p-md lg:p-xxl;
     }
 
+    .section-container-tear{
+        position: relative
+    }
+
+    .section-container-tear::before{
+        content: "";
+        height: 70px;
+        background: url("/images/page-tear.svg");
+        background-repeat-y: no-repeat;
+        
+        @apply absolute top-0 left-0 right-0 -translate-y-[40%] lg:-translate-y-[4%];
+    }
+    
+    .section-container-tear::after{
+        content: "";
+        height: 70px;
+        background: url("/images/page-tear-bottom.svg");
+        background-repeat-y: no-repeat;
+        
+        @apply absolute bottom-0 left-0 right-0 translate-y-1/2 lg:translate-y-2/3;
+    }
+
     .button-primary{
         @apply bg-primary hover:bg-accent text-dark-text text-subheading rounded-full py-md px-large transition-colors;
     }
