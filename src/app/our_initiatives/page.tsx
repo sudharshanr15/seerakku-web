@@ -1,8 +1,10 @@
+import { PageHeader } from "@/component";
 import { Cards, JoinUs } from "@/container/our_initiatives/index";
 
 function OurInitiatives(){
     return (
         <main>
+            <PageHeader title="OUR INITIATIVES" />
             <section className="section-container">
                 <div className="lg:p-xl lg:pb-0">
                     <h2 className="text-heading-1 font-squada-one uppercase mb-large">OUR INITIATIVES</h2>

@@ -16,6 +16,15 @@
 }
 
 @layer utilities{
+    .page-header{
+        background: url("/images/green-forest.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 40vh;
+
+        @apply flex items-center justify-center max-h-[28.25rem] lg:max-h-[18.75rem];
+    }
+
     .section-container{
         @apply p-md py-xl lg:p-xxl;
     }
@@ -48,5 +57,9 @@
     
     .button-accent{
         @apply bg-accent text-dark-text text-subheading rounded-full py-md px-large transition-colors;
+    }
+
+    .break-word{
+        word-break: break-word;
     }
 }
