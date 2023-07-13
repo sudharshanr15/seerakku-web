@@ -8,14 +8,14 @@ import Patches from "@/assets/images/patches.svg";
 function Donate() {
   return (
     <div className="relative bg-[#CFFDE1] ">
-      <Image src={Ellipse} className="absolute -top-32 right-[15%] lg:right-[25%]" />
+      <Image src={Ellipse} className="absolute -top-32 right-[15%] lg:right-[25%] " />
 
       <div className="flex flex-col lg:flex-row gap-20 p-[10%] ">
         <div className="basis-1/2">
           <Image src={Support} className="w-auto h-auto" />
         </div>
         <div className="basis-1/2">
-          <h1 className="squada-regular text-black text-4xl lg:text-7xl ">
+          <h1 className="font-squada-one text-black text-heading-3 lg:text-heading-2">
             Support For Sustainability
           </h1>
           <p className="text-black my-[5%]">
@@ -39,7 +39,7 @@ function Donate() {
             </button>
           </div>
           <input type="text" placeholder="Enter the Amount" className="input input-bordered border rounded-full bg-white w-full max-w-md my-[5%]" />
-          <button className="btn btn-warning border rounded-full block btn-lg klima-regular">
+          <button className="btn btn-warning border rounded-full border-hidden block btn-lg klima-regular hover:bg-accent">
           ❤ Donate Now
         </button>
         </div>
