@@ -20,9 +20,8 @@
         background: url("/images/green-forest.png");
         background-repeat: no-repeat;
         background-size: cover;
-        height: 40vh;
 
-        @apply flex items-center justify-center max-h-[28.25rem] lg:max-h-[18.75rem];
+        @apply flex items-center justify-center h-[28.25rem] lg:h-[18.75rem] min-h-[28.25rem] lg:min-h-[18.75rem];
     }
 
     .section-container{
