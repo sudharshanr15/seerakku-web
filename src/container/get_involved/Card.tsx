@@ -5,6 +5,7 @@ import { Button } from "@/component";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUpRightDots, faArrowTrendUp, faHeart } from "@fortawesome/free-solid-svg-icons";
 import { ReactElement } from "react";
+import { DonateButton } from "@/component/button";
 
 type ButtonType = {
     text: string,
@@ -87,7 +88,7 @@ function Card(){
                     <div className="w-full lg:w-1/2 p-large">
                         <h3 className="text-heading-2 mb-large font-squada-one uppercase">DONATE</h3>
                         <p className="mb-large text-body-big">Support our organization financially by making a donation.<br/><br/>Your contribution, no matter the size, directly funds our initiatives and helps us implement projects that promote sustainability, biodiversity, and environmental conservation.<br/><br/>Your generosity enables us to continue our important work and create a positive impact on the planet.</p>
-                        <Button text="Donate Now" className="button-primary" icon={<ButtonIcon icon={faHeart} />} />
+                        <DonateButton className="text-subheading" />
                     </div>
                 </div>
             </div>

@@ -7,7 +7,7 @@ import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { gsap } from "gsap";
 import { useEffect, useRef } from "react";
 
-function DonateButton({className}: {className?: string}){
+function DonateButton({text="Donate Now", className}: {text?: string, className?: string}){
     const icon = useRef(null)
 
     useEffect(() => {
@@ -24,7 +24,7 @@ function DonateButton({className}: {className?: string}){
         <button className={`button-primary text-body-bold ${className}`}>
             <Link href={""} className="flex gap-md">
                 <FontAwesomeIcon icon={faHeart} className="w-[16px]" ref={icon} />
-                <span>Donate Today</span>
+                <span>{text}</span>
             </Link>
         </button>
     )
