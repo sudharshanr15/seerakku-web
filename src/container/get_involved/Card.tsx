@@ -53,7 +53,7 @@ function Card(){
                     <div className="w-full lg:w-1/2 p-large">
                         <h3 className="text-heading-2 mb-large font-squada-one uppercase">BECOME A VOLUNTEER</h3>
                         <p className="mb-large text-body-big">Join our dedicated team of volunteers and actively participate in our initiatives.<br/><br/>Whether it's tree planting, water restoration, coastal plantation, or agroforestry, your time and effort can make a significant difference.<br/><br/>As a volunteer, you'll have the opportunity to connect with nature, learn new skills, and contribute directly to the well-being of our planet.</p>
-                        <Button text="Join Us" className="text-primary" icon={<ButtonIcon icon={faArrowUpRightDots} />} />
+                        <Button text="Join Us" className="button-primary" icon={<ButtonIcon icon={faArrowUpRightDots} />} />
                     </div>
                 </div>
             </div>
@@ -70,7 +70,7 @@ function Card(){
                     <div className="w-full lg:w-1/2 p-large">
                         <h3 className="text-heading-2 mb-large font-squada-one uppercase">BECOME A PARTNER</h3>
                         <p className="mb-large text-body-big">Collaboration is essential in driving sustainable change. If you represent an organization, institution, or community group that shares our vision, we invite you to become a partner.<br/><br/>By working together, we can leverage our collective resources, knowledge, and networks to implement impactful projects and create a greener and healthier future.</p>
-                        <Button text="Become Partner" className="text-primary" icon={<ButtonIcon icon={faArrowTrendUp} />} />
+                        <Button text="Become Partner" className="button-primary" icon={<ButtonIcon icon={faArrowTrendUp} />} />
                     </div>
                 </div>
             </div>
@@ -87,7 +87,7 @@ function Card(){
                     <div className="w-full lg:w-1/2 p-large">
                         <h3 className="text-heading-2 mb-large font-squada-one uppercase">DONATE</h3>
                         <p className="mb-large text-body-big">Support our organization financially by making a donation.<br/><br/>Your contribution, no matter the size, directly funds our initiatives and helps us implement projects that promote sustainability, biodiversity, and environmental conservation.<br/><br/>Your generosity enables us to continue our important work and create a positive impact on the planet.</p>
-                        <Button text="Donate Now" className="text-primary" icon={<ButtonIcon icon={faHeart} />} />
+                        <Button text="Donate Now" className="button-primary" icon={<ButtonIcon icon={faHeart} />} />
                     </div>
                 </div>
             </div>

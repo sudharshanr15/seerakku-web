@@ -9,7 +9,7 @@ type Button = {
 
 function Button({ text, icon=<></>, href = "", className = "" }: Button){
     return (
-        <button className={`button-primary ${className}`} >
+        <button className={className} >
             <Link href={href} className="flex items-center gap-md">
                 {icon}
                 {text}

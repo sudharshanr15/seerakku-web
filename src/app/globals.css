@@ -17,7 +17,7 @@
 
 @layer utilities{
     .section-container{
-        @apply p-md lg:p-xxl;
+        @apply p-md py-xl lg:p-xxl;
     }
 
     .section-container-tear{
@@ -44,5 +44,9 @@
 
     .button-primary{
         @apply bg-primary hover:bg-accent text-dark-text text-subheading rounded-full py-md px-large transition-colors;
+    }
+    
+    .button-accent{
+        @apply bg-accent text-dark-text text-subheading rounded-full py-md px-large transition-colors;
     }
 }
