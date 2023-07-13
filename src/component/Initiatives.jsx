@@ -20,7 +20,7 @@ function InitiativesCard1({ images, texts }) {
             <Image src={image} />
           </figure>
           <div className="card-body items-center h-[135px] hover:h-[250px]  justify-center">
-            <p className="text-body-big font-klima text-2xl text-[#2A2A2A]">{texts[index]}</p>
+            <p className="text-body-big font-klima text-2xl hover:font-black text-[#2A2A2A]">{texts[index]}</p>
           </div>
         </div>
       ))}
