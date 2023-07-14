@@ -11,6 +11,7 @@ import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Donate from "./Donate";
 import { menu } from "@/assets/icons";
+import { usePathname } from "next/navigation";
 
 const nav_list = [
   {
@@ -38,6 +39,8 @@ const nav_list = [
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+
+  const pathname = usePathname()
 
   useEffect(() => {
     if (isMenuOpen) {
@@ -84,7 +87,7 @@ function Navbar() {
         </Link>
         <ul className="flex-row gap-16 font-squada-one text-dark-text hidden xl:flex">
           {nav_list.map((item, index) => (
-            <li className="nav-link text-subheading-regular">
+            <li className={`nav-link text-subheading-regular ${pathname == item.href ? 'active' : ''}`} key={index}>
               <Link href={item.href}>{item.name}</Link>
             </li>
           ))}
