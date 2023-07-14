@@ -1,100 +1,98 @@
-import React from "react";
+import { DonateButton } from "./button";
 import Image from "next/image";
-import logo from "@/assets/images/logowhite.svg";
-import Neulancers from "@/assets/images/neulancers.svg"
+import logo from "../../public/logo/logo.svg";
+import neulancers_logo from "../../public/logo/neulancers-logo.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faEnvelope,
-  faPhone,
-  faMapLocation,
-} from "@fortawesome/free-solid-svg-icons";
+import { faEnvelope, faLocationDot, faPhone } from "@fortawesome/free-solid-svg-icons";
+import { faFacebook, faInstagram, faYoutube } from "@fortawesome/free-brands-svg-icons";
+import Link from "next/link";
 
-import {
-  faYoutube,
-  faInstagram,
-  faFacebook,
-} from "@fortawesome/free-brands-svg-icons";
+const nav_list = [
+  {
+    name: "About us",
+    href: "",
+  },
+  {
+    name: "Our Initiatives",
+    href: "/our_initiatives",
+  },
+  {
+    name: "Our Focus Area",
+    href: "/focus_area",
+  },
+  {
+    name: "Get Involved",
+    href: "/get_involved",
+  },
+  {
+    name: "Contact us",
+    href: "",
+  },
 
-function Footer() {
+]
+
+function Footer(){
   return (
-    <div className="bg-black">
-      <div className="flex flex-col lg:flex-row w-3/4 mx-auto p-[3%] gap-20 lg:gap-40">
-        <div className="basis-[50%]">
-          <h1 className="text-7xl text-white font-squada-one">
-            Donate For Better Future
-          </h1>
-          <p className="pt-[3%]">
-            Your donation can help us continue our important work in creating a
-            sustainable future. Every contribution, no matter the size, makes a
-            difference. Join us in our mission and make a donation today.
-            Together, we can build a greener and more equitable world.
-          </p>
-          <button className="btn btn-warning border rounded-full btn-sm klima-regular mt-[3%] hover:bg-accent border-hidden">
-            ❤ Donate Now
-          </button>
-        </div>
-        <div className="basis-[50%]">
-          <Image src={logo} />
-          <div className="flex items-center">
-            <FontAwesomeIcon
-              icon={faEnvelope}
-              className="w-[30px] my-[3%] ml-[3%] text-white"
-            />
-            <span className="ml-3 font-black text-white">
-              climateaction@seerakku.in
-            </span>
+    <footer className="footer-section section-container-tear after:content-[]">
+      <div className="section-container">
+        <div className="text-surface-color p-md lg:p-0">
+          <div className="flex flex-wrap lg:flex-nowrap w-full gap-xl">
+            <div className="w-full lg:w-1/2 flex flex-col gap-large">
+              <h2 className="font-squada-one text-heading-1 uppercase">DONATE FOR BETTER FUTURE</h2>
+              <p className="text-body-big">Your donation can help us continue our important work in creating a sustainable future. Every contribution, no matter the size, makes a difference. Join us in our mission and make a donation today. Together, we can build a greener and more equitable world.</p>
+              <DonateButton text="Donate Today" className="text-subheading w-fit" />
+            </div>
+            <div className="w-full lg:w-1/2">{}
+              <div className="flex flex-col gap-xl">
+                <div className="flex gap-4">
+                  <Image src={logo} alt="Brand Logo" className="w-[3.2rem]" />
+                  <span className="text-heading-4 font-squada-one">Seeraku</span>
+                </div>
+                <div className="flex flex-col gap-8 text-body-bold lg:text-subheading">
+                  <p className="inline-flex items-center">
+                    <span className="w-[1.5rem] inline-block"><FontAwesomeIcon className="w-full h-auto" icon={faEnvelope} /></span>
+                    <span className="ms-3">climateaction@seerakku.in</span>
+                  </p>
+                  <p className="inline-flex items-center">
+                    <span className="w-[1.5rem] inline-block"><FontAwesomeIcon className="w-full h-auto" icon={faPhone} /></span>
+                    <span className="ms-3">+91 6379248007</span>
+                  </p>
+                  <p className="inline-flex items-center">
+                    <span className="w-[1.5rem] inline-block"><FontAwesomeIcon className="w-full h-auto" icon={faLocationDot} /></span>
+                    <span className="ms-3">Chennai, Tamilnadu, India.</span>
+                  </p>
+                </div>
+                <div className="flex gap-6">
+                  <a href="" target="_blank" className="h-[2.7rem] hover:text-primary transition-colors duration-500">
+                    <FontAwesomeIcon icon={faYoutube} className="h-full w-auto" />
+                  </a>
+                  <a href="" target="_blank" className="h-[2.7rem] hover:text-primary transition-colors duration-500">
+                    <FontAwesomeIcon icon={faInstagram} className="h-full w-auto" />
+                  </a>
+                  <a href="" target="_blank" className="h-[2.7rem] hover:text-primary transition-colors duration-500">
+                    <FontAwesomeIcon icon={faFacebook} className="h-full w-auto" />
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
-          <div className="flex items-center">
-            <FontAwesomeIcon
-              icon={faPhone}
-              className="w-[30px] my-[3%] ml-[3%] text-white"
-            />
-            <span className="ml-3 font-black text-white">+91 6379248007</span>
-          </div>
-          <div className="flex items-center">
-            <FontAwesomeIcon
-              icon={faMapLocation}
-              className="w-[30px] my-[3%] ml-[3%] text-white"
-            />
-            <span className="ml-3 font-black text-white">
-              Chennai,Tamilnadu,India
-            </span>
-          </div>
-          <div className="flex items-center">
-            <FontAwesomeIcon
-              icon={faYoutube}
-              className="w-[30px] my-[3%] ml-[3%] text-white hover:text-primary"
-            />
-            <FontAwesomeIcon
-              icon={faInstagram}
-              className="w-[30px] my-[3%] ml-[3%] text-white hover:text-primary"
-            />
-            <FontAwesomeIcon
-              icon={faFacebook}
-              className="w-[30px] my-[3%] ml-[3%] text-white hover:text-primary"
-            />
+          <div className="mt-xxl">
+            <div className="flex flex-wrap justify-between gap-md">
+              <div className="flex flex-wrap w-full lg:w-auto font-squada-one gap-large">
+                {nav_list.map((item, index) => (
+                  <Link href={item.href} key={index} className="text-subheading-regular">{item.name}</Link>
+                ))}
+              </div>
+              <div className="text-body w-full lg:w-auto text-white flex items-center">
+                  <p>Crafted with <span className="font-bold">&#x2661;</span> by</p>
+                  <p className="ms-1 w-[5.22rem]"><Image src={neulancers_logo} className="w-full h-auto" alt="Neulancers Logo" /></p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <hr className="border-white border-[2px]"/>
-      <div className="flex flex-col lg:flex-row justify-center items-center lg:justify-between">
-        <div className="flex w-4/5 mx-auto gap-10 p-[2%] flex-wrap">
-            <p className="text-white">About us</p>
-            <p className="text-white">Our Focus Area</p>
-            <p className="text-white">Our Initiatives</p>
-            <p className="text-white">Get Involved</p>
-            <p className="text-white">Contact us</p>
-
-        </div>
-        <div className="flex items-center mr-[3%]">
-          <p>Created with ♡ by</p>
-          <Image src={Neulancers} className="w-[100px] h-[50px] bg-white"/>
-
-        </div>
-
-      </div>
-    </div>
-  );
+    </footer>
+  )
 }
 
 export default Footer;

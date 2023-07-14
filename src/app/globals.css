@@ -82,4 +82,10 @@
 
         @apply bg-primary mt-1;
     }
+
+    .footer-section{
+        background: url("/images/footer-bg.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
 }
