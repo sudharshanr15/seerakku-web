@@ -10,29 +10,34 @@ import Patches3 from "@/assets/images/patches3.svg";
 import Initiatives from "@/component/Initiatives";
 import GetInvolved from "@/component/GetInvolved";
 import Sponsers from "@/component/Sponsers";
+import { Hero } from "@/container/home";
 
 function page() {
   return (
-    <section className="bg-white h-full">
-      <Carousel />
-      <Donate />
-      <div className="relative">
-        <Image src={Patches} className="w-full absolute -top-2" />
-      </div>
-      <Initiatives />
-      <div className="relative">
-        <Image
-          src={Patches2}
-          className="w-full absolute -top-2 bg-[##FDFAF3] border-none"
-        />
-      </div>
-      <GetInvolved />
-      <div className="relative">
-        <Image src={Patches3} className="w-full absolute -top-2 " />
-      </div>
+    <>
+    <Hero />
+    <h1>sdfsdf</h1>
+    </>
+    // <section className="bg-white h-full">
+    //   <Carousel />
+    //   <Donate />
+    //   <div className="relative">
+    //     <Image src={Patches} className="w-full absolute -top-2" />
+    //   </div>
+    //   <Initiatives />
+    //   <div className="relative">
+    //     <Image
+    //       src={Patches2}
+    //       className="w-full absolute -top-2 bg-[##FDFAF3] border-none"
+    //     />
+    //   </div>
+    //   <GetInvolved />
+    //   <div className="relative">
+    //     <Image src={Patches3} className="w-full absolute -top-2 " />
+    //   </div>
 
-      <Sponsers />
-    </section>
+    //   <Sponsers />
+    // </section>
   );
 }
 
