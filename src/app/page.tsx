@@ -16,7 +16,7 @@ function page() {
   return (
     <>
     <Hero />
-    <section className="bg-white h-full">
+    {/* <section className="bg-white h-full">
       <Carousel />
       <Donate />
       <div className="relative">
@@ -35,7 +35,7 @@ function page() {
       </div>
 
       <Sponsers />
-    </section>
+    </section> */}
     </>
   );
 }

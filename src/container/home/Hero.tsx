@@ -44,7 +44,7 @@ function Hero(){
 
     const pagination = {
         clickable: true,
-        renderBullet: function(index, className){
+        renderBullet: function(index: number, className: string){
             return `<span class="slide_pagination ${className}"></span>`
         }
     }

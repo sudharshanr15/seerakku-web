@@ -48,7 +48,7 @@ function Cards(){
             {data.map((item, index) => {
                 let is_odd = (index % 2) != 0
                 return (
-                    <section className={`${is_odd ? 'bg-primary-lite section-container-tear' : ''}`}>
+                    <section className={`${is_odd ? 'bg-primary-lite section-container-tear' : ''}`} key={index}>
                         <div className="section-container">
                             <div className="flex items-center flex-wrap">
                                 <div className={`w-full lg:w-1/4 ${is_odd ? "lg:order-2" : ''}`}>
