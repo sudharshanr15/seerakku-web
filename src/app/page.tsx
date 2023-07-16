@@ -15,7 +15,7 @@ import { Hero } from "@/container/home";
 function page() {
   return (
     <>
-      {/* <Hero /> */}
+      <Hero />
       <section className="bg-white h-full">
         <Carousel />
         <Donate />
