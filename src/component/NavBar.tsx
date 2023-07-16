@@ -16,7 +16,7 @@ import { usePathname } from "next/navigation";
 const nav_list = [
   {
     name: "About us",
-    href: "",
+    href: "/about_us",
   },
   {
     name: "Our Initiatives",

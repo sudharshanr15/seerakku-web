@@ -125,3 +125,23 @@
         border-radius: 50%;
     }
 }
+
+.vision-mission-container .vision{
+    background: url("/images/vision.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.vision-mission-container .mission{
+    background-image: url("/images/mission.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.vision-mission-container .vision .overlay{
+    background-color: #FED04999;
+}
+
+.vision-mission-container .mission .overlay{
+    background-color: #3D565699;
+}
