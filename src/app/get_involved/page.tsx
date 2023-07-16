@@ -1,5 +1,10 @@
 import { PageHeader } from "@/component";
 import { Card } from "@/container/get_involved";
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: "Get Involved"
+}
 
 function GetInvolved(){
     return (

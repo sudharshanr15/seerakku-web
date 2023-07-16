@@ -1,5 +1,10 @@
 import { PageHeader } from "@/component";
 import { Cards, JoinUs } from "@/container/our_initiatives/index";
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: "Our Initiatives"
+}
 
 function OurInitiatives(){
     return (

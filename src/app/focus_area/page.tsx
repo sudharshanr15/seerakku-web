@@ -1,6 +1,12 @@
 import { PageHeader } from "@/component"
 import { Cards } from "@/container/focus_area"
 
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: "Focus Area"
+}
+
 function FocusArea(){
     return (
         <main>
