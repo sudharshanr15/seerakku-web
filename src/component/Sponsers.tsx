@@ -61,13 +61,13 @@ function Sponsers() {
         <h2 className="text-heading-3 font-squada-one text-center uppercase">OUR SPONSORS</h2>
         <div className="flex flex-wrap gap-large w-full justify-center">
           {SponsorsList.map((item, index) => (
-            <Card {...item} />
+            <Card {...item} key={index} />
           ))}
         </div>
         <h2 className="text-heading-3 font-squada-one text-center uppercase">OUR PARTNERS</h2>
         <div className="flex flex-wrap gap-large w-full justify-center">
           {PartnersList.map((item, index) => (
-            <Card {...item} />
+            <Card {...item} key={index} />
           ))}
         </div>
       </div>    

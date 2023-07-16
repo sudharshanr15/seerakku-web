@@ -51,25 +51,6 @@ const InvolvedList: InvolvedType[] = [
   },
 ]
 
-function Cards({ images, heads, texts, links }) {
-  return (
-    <div className="flex flex-wrap gap-xl">
-      {images.map((image, index) => (
-        <div className="w-full md:w-2/3 md:max-w-[17.6rem] bg-surface-color flex flex-col items-center gap-large p-large justify-between rounded-2xl outline-accent outline-4 hover:outline hover:drop-shadow-lg transition-all duration-400">
-          <Image src={image} alt={heads[index]} />
-          <h2 className="text-heading-3 font-squada-one text-center">
-            {heads[index]}
-          </h2>
-          <p className="text-body-big text-center">
-            {texts[index]}
-          </p>
-          <Button className="button-primary" text={links[index]} />
-        </div>
-      ))}
-    </div>
-  );
-}
-
 function Card({image, title, text, link, icon}: InvolvedType){
   return (
     <div className="w-full md:w-2/3 md:max-w-[17.6rem] bg-surface-color flex flex-col items-center gap-large p-large justify-between rounded-2xl outline-accent outline-4 hover:outline hover:drop-shadow-lg transition-all duration-400">
@@ -86,15 +67,6 @@ function Card({image, title, text, link, icon}: InvolvedType){
 }
 
 function GetInvolved() {
-  const Image = [tojoinus, donateus, partnerus];
-  const Head = ["BECOME VOLUNTEER ", "DONATE", "BECOME PARTNER"];
-  const Text = [
-    "Join our dedicated team of volunteers and actively participate in our initiatives. ",
-    "Support our organization financially by making a donation. ",
-    "Collaboration is essential in driving sustainable change",
-  ];
-  const Links = ["↗ Join Us", "🖤 Donate", "↝ Partner Us"];
-
   return (
     <section className="section-container-tear bg-primary-lite">
       <div className="section-container flex flex-col items-center gap-large">

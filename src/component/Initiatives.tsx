@@ -77,7 +77,7 @@ function Initiatives() {
         <Button text="View Details" className="button-accent w-fit" />
         <div className="flex flex-wrap gap-large justify-center max-w-[75rem]">
           {Initiatives_list.map((item, index) => (
-            <Card {...item} />
+            <Card {...item} key={index} />
           ))}
         </div>
       </div>
