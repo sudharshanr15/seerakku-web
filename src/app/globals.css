@@ -61,7 +61,7 @@
     }
     
     .button-accent{
-        @apply bg-accent text-dark-text text-subheading rounded-full py-md px-large transition-colors;
+        @apply bg-accent text-white text-subheading rounded-full py-md px-large transition-colors;
     }
 
     .nav-link{
@@ -144,4 +144,9 @@
 
 .vision-mission-container .mission .overlay{
     background-color: #3D565699;
+}
+
+.our-sponsors-section{
+    background: url("/images/paper-bg.png");
+    background-size: cover;
 }

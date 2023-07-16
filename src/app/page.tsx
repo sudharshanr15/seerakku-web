@@ -16,28 +16,10 @@ function page() {
   return (
     <>
       <Hero />
-      <section className="bg-white h-full">
-        <Carousel />
-        <Donate />
-        <div className="relative">
-          <Image alt="" src={Patches} className="w-full absolute -top-2" />
-        </div>
-        <Initiatives />
-        <div className="relative">
-          <Image
-            src={Patches2}
-            alt=""
-            className="w-full absolute -top-2 bg-[##FDFAF3] border-none"
-          />
-        </div>
-        <GetInvolved />
-        <div className="relative">
-          <Image alt="" src={Patches3} className="w-full absolute -top-2 " />
-        </div>
-
-        <Sponsers />
-      </section>
-      {/* hello */}
+      <Donate />
+      <Initiatives />
+      <GetInvolved />
+      <Sponsers />
     </>
   );
 }
