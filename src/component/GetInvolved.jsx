@@ -8,19 +8,19 @@ function Cards({ images, heads, texts, links }) {
   return (
     <div className="flex flex-wrap justify-between w-3/4 mx-auto">
       {images.map((image, index) => (
-        <div className="card w-[329px] h-[541px] bg-surface-color shadow-xl">
-          <figure className="px-10 pt-10">
+        <div className=" w-[329px] h-[541px] bg-surface-color shadow-xl border rounded-lg">
+          <figure className="px-10 pt-10 flex justify-center">
             <Image src={image} />
           </figure>
-          <div className="card-body items-center text-center">
-            <h2 className="card-title h-[110px] text-heading-3 font-squada-one text-secondary">
+          <div className="text-center">
+            <h2 className=" h-[110px] text-heading-3 font-squada-one text-secondary">
               {heads[index]}
             </h2>
             <p className="h-[116px] text-body-big text-[#2A2A2A] klima-regular">
               {texts[index]}
             </p>
 
-            <button className="btn bg-primary border hover:bg-accent border-hidden rounded-full text-black">
+            <button className="p-3 bg-primary border hover:bg-accent border-hidden rounded-full mt-10 text-black">
               {links[index]}
             </button>
           </div>
@@ -54,7 +54,7 @@ function GetInvolved() {
           </span>
         </p>
         <div className="flex justify-center mt-[3%]">
-          <button className="btn btn-success text-white btn-lg border rounded-full">
+          <button className=" border-hidden rounded-full p-3 text-white btn-lg bg-accent">
             View Details
           </button>
         </div>

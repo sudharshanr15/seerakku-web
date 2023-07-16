@@ -10,17 +10,17 @@ import Init7 from "@/assets/images/init7.svg";
 
 function InitiativesCard1({ images, texts }) {
   return (
-    <div className="flex justify-evenly p-[3%] flex-wrap">
+    <div className="flex justify-center p-[1%] w-11/12 mx-auto flex-wrap">
       {images.map((image, index) => (
         <div
-          className="card card-compact w-[280px] h-[304px] bg-primary shadow-xl m-3"
+          className=" w-[280px] h-[304px] bg-primary shadow-md border rounded-lg m-3"
           key={index}
         >
           <figure>
-            <Image src={image} />
+            <Image src={image} className="border rounded-lg "/>
           </figure>
-          <div className="card-body items-center h-[135px] hover:h-[250px]  justify-center">
-            <p className="text-body-big font-klima text-2xl hover:font-black text-[#2A2A2A]">{texts[index]}</p>
+          <div className=" h-[135px]  ">
+            <p className="text-body-big font-klima text-center  hover:font-black text-[#2A2A2A]">{texts[index]}</p>
           </div>
         </div>
       ))}
@@ -29,17 +29,17 @@ function InitiativesCard1({ images, texts }) {
 }
 function InitiativesCard2({ images, texts }) {
   return (
-    <div className="flex justify-evenly p-[3%] flex-wrap">
+    <div className="flex justify-center p-[1%] flex-wrap w-11/12 mx-auto">
       {images.map((image, index) => (
         <div
-          className="card card-compactw-[280px] h-[304px] bg-primary shadow-xl m-3"
+          className="w-[280px] h-[304px] bg-primary shadow-md border rounded-lg m-3"
           key={index}
         >
           <figure>
-            <Image src={image} />
+            <Image src={image} className="border rounded-lg "/>
           </figure>
-          <div className="card-body items-center h-[135px] hover:h-[250px]  justify-center">
-            <p className="text-body-big font-klima text-2xl hover:font-black text-[#2A2A2A]">{texts[index]}</p>
+          <div className=" h-[135px]  z-50">
+            <p className="text-body-big font-klima text-center  hover:font-black text-[#2A2A2A]">{texts[index]}</p>
           </div>
         </div>
       ))}
@@ -58,13 +58,13 @@ function Initiatives() {
       <h1 className="text-center text-black text-heading-3 lg:text-heading-2 font-squada-one">
         Our Initiatives
       </h1>
-      <p className="w-full lg:w-1/2 mx-auto text-center klima-regular text-black text-2xl p-[2%]">
+      <p className="w-full lg:w-1/2 mx-auto text-center klima text-black text-2xl p-[2%]">
         At Seerakku, we are dedicated to creating a sustainable future through
         our various initiatives. Join us in making a positive impact and
         contributing to environmental conservation with the following programs:
       </p>
       <div className="flex justify-center">
-        <button className="btn btn-success text-white btn-lg">
+        <button className="bg-accent text-white  border-hidden rounded-full p-3">
           View Details
         </button>
       </div>
