@@ -12,6 +12,7 @@
 @layer base{
     html{
         @apply bg-surface-color;
+        @apply text-dark-text;
     }
 }
 
