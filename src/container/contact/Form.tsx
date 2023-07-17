@@ -7,7 +7,7 @@ type InputType = {
     id?: string
 }
 
-function Input({label, type="text", name, id=""}: Input){
+function Input({label, type="text", name, id=""}: InputType){
     return (
         <div className="p-md text-secondary font-body border-secondary border-[1px] rounded-2xl">
             <label htmlFor={id} className="block opacity-50">{label}</label>
