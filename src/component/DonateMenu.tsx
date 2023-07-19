@@ -38,7 +38,7 @@ function Input({ placeholder = "", ref_d, value, onChange }: {
 
 function DonateMenu() {
     const [selectedAmount, setSelectedAmount]: [number, any] = useState(0);
-    const [activeAmount, setActiveAmount] = useState(-1)
+    const [activeAmountItem, setActiveAmountItem] = useState(-1)
     const inputAmount = useRef(null)
 
     enum StepsStatus {
@@ -65,40 +65,70 @@ function DonateMenu() {
         }
     ])
 
+    // useEffect(() => {
+    //     let list = stepsList;
+
+    //     let new_list = null;
+
+    //     let active_step = 2;
+
+    //     new_list = list.map((item, index) => {
+    //         let status = null;
+            
+    //         if(index+1 == active_step){
+    //             status = StepsStatus.Active
+    //         }else if(index+1 < active_step){
+    //             status = StepsStatus.Completed
+    //         }else{
+    //             status = StepsStatus.Inactive
+    //         }
+
+    //         return {
+    //             ...item,
+    //             status: status
+    //         }
+    //     })
+
+    //     setStepsList(new_list)
+    // }, [stepsList])
+
     const [activeStep, setActiveStep] = useState(1)
 
-    function onStepsChange(){
-        setStepsList(prev => {
-            let new_list = prev
+    useEffect(() => {
+        changeStep()
+    }, [activeStep])
 
-            new_list = new_list.map((item, index) => {
-                let status = null;
+    function changeStep(){
+        let new_list = null;
 
-                if((index+1) <= activeStep ){
-                    status = StepsStatus.Completed
-                }else{
-                    status = StepsStatus.Inactive
-                }
+        let active_step = activeStep;
 
-                return {
-                    ...item,
-                    status: status
-                }
-            })
+        new_list = stepsList.map((item, index) => {
+            let status = null;
+            
+            if(index+1 == active_step){
+                status = StepsStatus.Active
+            }else if(index+1 < active_step){
+                status = StepsStatus.Completed
+            }else{
+                status = StepsStatus.Inactive
+            }
 
-
-            new_list[activeStep].status = StepsStatus.Active
-
-            return new_list
+            return {
+                ...item,
+                status: status
+            }
         })
 
-        setActiveStep(prev => (++prev))
+        setStepsList(new_list)
+    }
 
+    function onStepsChange(){
+        setActiveStep(prev => (++prev))
     }
 
     function onEditAmount(){
-        setActiveStep(0)
-        onStepsChange()
+        setActiveStep(1)
     }
 
     function Step1(){
@@ -127,7 +157,7 @@ function DonateMenu() {
 
         function onDonate(){
             let input_value = inputAmount.current?.value
-            if(input_value == false && activeAmount == -1){
+            if(input_value == false && activeAmountItem == -1){
                 console.log("TODO: Throw error")
                 return
             }else if(input_value != false){
@@ -138,10 +168,10 @@ function DonateMenu() {
                 }
                 setSelectedAmount(input_value)
             }else{
-                setSelectedAmount(amountList[activeAmount].value)
+                setSelectedAmount(amountList[activeAmountItem].value)
             }
             onStepsChange()
-            // if(activeAmount == -1 && inputAmount.current)
+            // if(activeAmountItem == -1 && inputAmount.current)
         }
 
 
@@ -160,7 +190,7 @@ function DonateMenu() {
                 return new_list
             })
             e.target.dataset.status = "active"
-            setActiveAmount(active_index)
+            setActiveAmountItem(active_index)
 
             // setInputAmount(amountList[active_index].value)            
         }
@@ -170,7 +200,7 @@ function DonateMenu() {
             <div className="flex flex-col gap-10 items-center">
                 <div className="flex gap-large">
                     {amountList.map((item) => (
-                        <ValueButton text={item.value} key={item.id} index={item.id} isActive={activeAmount == item.id} click={onPriceClicked} />
+                        <ValueButton text={item.value} key={item.id} index={item.id} isActive={activeAmountItem == item.id} click={onPriceClicked} />
                     ))}
                 </div>
                 <Input placeholder="Enter the amount" ref_d={inputAmount}  />
@@ -227,7 +257,7 @@ function DonateMenu() {
                             </div>
                             <div className="flex flex-col lg:flex-row gap-md mt-12">
                                 {stepsList.map((item, index) => (
-                                    <div className="group flex gap-md text-body-big items-center data-[status=inactive]:opacity-50" key={index} data-status={item.status}>
+                                    <div className="group flex gap-md text-body-big items-center data-[status=inactive]:opacity-50 transition-all duration-300" key={index} data-status={item.status}>
                                         <span className="bg-primary group-data-[status=completed]:bg-primary-lite group-data-[status=active]:text-white group-data-[status=active]:bg-secondary aspect-square w-9 inline-flex items-center justify-center">{item.id}</span>
                                         <span className="">{item.name}</span>
                                     </div>
