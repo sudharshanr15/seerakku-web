@@ -36,3 +36,5 @@ export { default as what_we_do_5} from "./what-we-do_5.png";
 export { default as our_story_1} from "./our-story_1.png";
 export { default as our_story_2} from "./our-story_2.png";
 export { default as our_story_3} from "./our-story_3.png";
+
+export { default as donate_menu_bg} from "./donate-menu-bg.png"
