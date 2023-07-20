@@ -4,9 +4,7 @@ import Image from "next/image";
 import logo from "../../public/logo/logo.svg";
 
 import { donate_menu_bg } from "@/assets/images";
-import { DonateButton } from "./button";
 import { useRef, useState, useEffect } from "react";
-import Button from "./Button";
 
 
 function ValueButton({ text, click, index, isActive = false }: {
@@ -22,24 +20,14 @@ function ValueButton({ text, click, index, isActive = false }: {
     )
 }
 
-function Input({ placeholder = "", ref_d, value, onChange }: {
-    placeholder: string,
-    ref_d?: any,
-    value?: string | number,
-    onChange?: () => void
-}) {
-    return (
-        <div className="p-md bg-surface-color text-center text-secondary font-body border-secondary border-[1px] rounded-2xl w-full max-w-[27rem]">
-            <input type="text" className="bg-surface-color outline-none w-full text-center" placeholder={placeholder} value={value} ref={ref_d} />
-        </div>
-    )
-}
-
-
 function DonateMenu() {
     const [selectedAmount, setSelectedAmount]: [number, any] = useState(0);
     const [activeAmountItem, setActiveAmountItem] = useState(-1)
     const inputAmount = useRef(null)
+
+    const inputName = useRef()
+    const inputPhone = useRef()
+    const inputEmail = useRef()
 
     enum StepsStatus {
         Inactive = "inactive",
@@ -64,39 +52,17 @@ function DonateMenu() {
             status: StepsStatus.Inactive
         }
     ])
-
-    // useEffect(() => {
-    //     let list = stepsList;
-
-    //     let new_list = null;
-
-    //     let active_step = 2;
-
-    //     new_list = list.map((item, index) => {
-    //         let status = null;
-            
-    //         if(index+1 == active_step){
-    //             status = StepsStatus.Active
-    //         }else if(index+1 < active_step){
-    //             status = StepsStatus.Completed
-    //         }else{
-    //             status = StepsStatus.Inactive
-    //         }
-
-    //         return {
-    //             ...item,
-    //             status: status
-    //         }
-    //     })
-
-    //     setStepsList(new_list)
-    // }, [stepsList])
-
     const [activeStep, setActiveStep] = useState(1)
 
     useEffect(() => {
         changeStep()
     }, [activeStep])
+
+    let counter = 0
+    useEffect(() => {
+        counter++
+        console.log(counter)
+    })
 
     function changeStep(){
         let new_list = null;
@@ -124,6 +90,8 @@ function DonateMenu() {
     }
 
     function onStepsChange(){
+        console.log(inputName.current.value)
+        console.log(inputEmail.current.value)
         setActiveStep(prev => (++prev))
     }
 
@@ -197,13 +165,15 @@ function DonateMenu() {
 
 
         return (
-            <div className="flex flex-col gap-10 items-center">
+            <div className={`flex flex-col gap-10 items-center ${activeStep == 1 ? "block" : "hidden"}`}>
                 <div className="flex gap-large">
                     {amountList.map((item) => (
                         <ValueButton text={item.value} key={item.id} index={item.id} isActive={activeAmountItem == item.id} click={onPriceClicked} />
                     ))}
                 </div>
-                <Input placeholder="Enter the amount" ref_d={inputAmount}  />
+                <div className="p-md bg-surface-color text-center text-secondary font-body border-secondary border-[1px] rounded-2xl w-full max-w-[27rem]">
+                    <input type="text" className="bg-surface-color outline-none w-full text-center" placeholder="Enter the amount" ref={inputAmount} />
+                </div>
                 <button className="button-primary hover: w-full" onClick={onDonate}>Donate</button>
             </div>
         )
@@ -211,14 +181,20 @@ function DonateMenu() {
 
     function Step2(){
         return (
-            <div className="flex flex-col gap-10 items-center">
+            <div className={`flex flex-col gap-10 items-center ${activeStep == 2 ? "block" : "hidden"}`}>
                 <div className="flex flex-col lg:flex-row items-start lg:items-center">
                     <h3 className="text-body-big">you are donating <span className="text-subheading text-secondary">{selectedAmount}</span> for Future</h3>
                     <button className="bg-primary-lite rounded-3xl mt-4 lg:ms-4 text-body-big py-2 px-6 text-secondary" onClick={onEditAmount}>Edit</button>
                 </div>
-                <Input placeholder="Enter your name" />
-                <Input placeholder="Enter your phone number" />
-                <Input placeholder="Enter Email ID" />
+                <div className="p-md bg-surface-color text-center text-secondary font-body border-secondary border-[1px] rounded-2xl w-full max-w-[27rem]">
+                    <input type="text" className="bg-surface-color outline-none w-full text-center" placeholder="Enter your name" ref={inputName} />
+                </div>
+                <div className="p-md bg-surface-color text-center text-secondary font-body border-secondary border-[1px] rounded-2xl w-full max-w-[27rem]">
+                    <input type="text" className="bg-surface-color outline-none w-full text-center" placeholder="Enter your phone number" ref={inputPhone} />
+                </div>
+                <div className="p-md bg-surface-color text-center text-secondary font-body border-secondary border-[1px] rounded-2xl w-full max-w-[27rem]">
+                    <input type="text" className="bg-surface-color outline-none w-full text-center" placeholder="Enter Email ID" ref={inputEmail} />
+                </div>
                 <button className="button-primary hover: w-full" onClick={onStepsChange}>Next</button>
             </div>
         )
@@ -226,15 +202,27 @@ function DonateMenu() {
 
     function Step3(){
         return (
-            <div className="flex flex-col gap-10 items-center">
+            <div className={`flex flex-col gap-10 items-center ${activeStep == 3 ? "block" : "hidden"}`}>
                 <div className="flex flex-col lg:flex-row items-start lg:items-center">
                     <h3 className="text-body-big">you are donating <span className="text-subheading text-secondary">{selectedAmount}</span> for Future</h3>
                     <button className="bg-primary-lite rounded-3xl mt-4 lg:ms-4 text-body-big py-2 px-6 text-secondary" onClick={onEditAmount}>Edit</button>
                 </div>
-                <Input placeholder="Enter your UPI ID" />
-                <button className="button-primary hover: w-full" onClick={onStepsChange}>Submit</button>
+                <div className="p-md bg-surface-color text-center text-secondary font-body border-secondary border-[1px] rounded-2xl w-full max-w-[27rem]">
+                    <input type="text" className="bg-surface-color outline-none w-full text-center" placeholder="Enter your UPI ID" />
+                </div>
+                <button className="button-primary hover: w-full" onClick={onSubmit}>Submit</button>
             </div>
         )
+    }
+
+    function onSubmit(){
+        const data = {
+            amount: selectedAmount,
+            name: inputName.current.value,
+            email: inputEmail.current.value,
+            phone: inputPhone.current.value
+        }
+        console.log(inputName.current.value)
     }
 
     return (
@@ -267,9 +255,9 @@ function DonateMenu() {
                     </div>
                     <div className="bg-white flex justify-center">
                         <div className="p-md">
-                            {
-                                activeStep == 3 ? <Step3 /> : ( activeStep == 2 ? <Step2 /> : <Step1 />)
-                            }
+                            <Step1 />
+                            <Step2 />
+                            <Step3 />
                         </div>
                     </div>
                 </div>

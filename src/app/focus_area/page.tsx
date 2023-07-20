@@ -19,7 +19,7 @@ function FocusArea(){
                 </div>
             </section>
             <Cards />
-            <DonateMenu />
+            {/* <DonateMenu /> */}
         </main>
     )
 }
