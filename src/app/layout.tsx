@@ -23,7 +23,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
+      <body className="data-[has-overflow=true]:overflow-hidden">
         <NavBar />
         {children}
         <Footer />
