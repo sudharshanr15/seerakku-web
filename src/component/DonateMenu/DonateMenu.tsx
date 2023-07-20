@@ -4,7 +4,10 @@ import Image from "next/image";
 import logo from "../../../public/logo/logo.svg";
 
 import { donate_menu_bg } from "@/assets/images";
-import { useRef, useState, useEffect, useId } from "react";
+import { useRef, useState, useEffect, useContext } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { OverlayDispatchContext } from "@/context/OverlayProvider";
 
 
 function ValueButton({ text, click, index, isActive = false }: {
@@ -219,8 +222,10 @@ function DonateMenu({className=""}) {
         // console.log(inputName.current.value)
     }
 
+    const overlayDispatch = useContext(OverlayDispatchContext)
+
     return (
-        <section className={`p-0 lg:section-container fixed top-0 bottom-0 left-0 w-full h=full overflow-auto z-[10000] shadow-2xl bg-secondary bg-opacity-50 max-h-screen ${className}`}>
+        <section className={`p-0 lg:section-container fixed top-0 bottom-0 left-0 w-full h-full overflow-auto z-[10000] max-h-screen transition-all duration-500 ${className}`}>
             <div className="flex flex-col lg:flex-row justify-center mx-auto max-w-[79.75rem]">
                 <div className="w-full lg:w-1/2 max-w-[38.68rem] relative">
                     <Image src={donate_menu_bg} alt="Donate Image" className="w-full h-auto" unoptimized />
@@ -233,9 +238,14 @@ function DonateMenu({className=""}) {
                 <div className="w-full lg:w-1/2 bg-white">
                     <div className="bg-surface-color">
                         <div className="p-large">
-                            <div className="flex gap-md">
-                                <Image src={logo} alt="Brand Logo" className="w-[3.2rem] h-auto" />
-                                <span className="font-squada-one text-heading-4">SEERAKKU</span>
+                            <div className="flex justify-between items-center">
+                                <div className="flex items-center gap-md">
+                                    <Image src={logo} alt="Brand Logo" className="w-[3.2rem] h-auto" />
+                                    <span className="font-squada-one text-heading-4">SEERAKKU</span>
+                                </div>
+                                <button className="h-[2.5rem]" onClick={() => {overlayDispatch({type: 'toggle'})}}>
+                                    <FontAwesomeIcon icon={faXmark} className="h-full w-auto" />
+                                </button>
                             </div>
                             <div className="flex flex-col lg:flex-row gap-md mt-12">
                                 {stepsList.map((item, index) => (

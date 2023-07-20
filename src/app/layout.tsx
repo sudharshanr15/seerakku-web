@@ -24,7 +24,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="data-[has-overlay=true]:overflow-hidden">
+      <body className="data-[has-overlay=true]:overflow-hidden data-[has-overlay=true]:bg-secondary data-[has-overlay=true]:bg-opacity-50">
         <NavBar />
         <OverlayProvider>
           {children}
