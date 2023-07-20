@@ -5,13 +5,14 @@ import Link from "next/link";
 
 import logo from "../../public/logo/logo.svg";
 import { DonateButton } from "./button";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { gsap } from "gsap";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Donate from "./Donate";
 import { menu } from "@/assets/icons";
 import { usePathname } from "next/navigation";
+import { OverlayContext, OverlayDispatchContext } from "@/context/OverlayProvider"
 
 const nav_list = [
   {
@@ -38,6 +39,9 @@ const nav_list = [
 ]
 
 function Navbar() {
+  const overflow = useContext(OverlayContext)
+  const overlayDispatch = useContext(OverlayDispatchContext)
+
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const pathname = usePathname()

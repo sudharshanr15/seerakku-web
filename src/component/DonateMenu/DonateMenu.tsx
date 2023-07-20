@@ -1,10 +1,10 @@
 'use client';
 
 import Image from "next/image";
-import logo from "../../public/logo/logo.svg";
+import logo from "../../../public/logo/logo.svg";
 
 import { donate_menu_bg } from "@/assets/images";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, useId } from "react";
 
 
 function ValueButton({ text, click, index, isActive = false }: {
@@ -20,14 +20,14 @@ function ValueButton({ text, click, index, isActive = false }: {
     )
 }
 
-function DonateMenu() {
+function DonateMenu({className=""}) {
     const [selectedAmount, setSelectedAmount]: [number, any] = useState(0);
     const [activeAmountItem, setActiveAmountItem] = useState(-1)
     const inputAmount = useRef(null)
 
-    const inputName = useRef()
-    const inputPhone = useRef()
-    const inputEmail = useRef()
+    const inputName = useRef(null)
+    const inputPhone = useRef(null)
+    const inputEmail = useRef(null)
 
     enum StepsStatus {
         Inactive = "inactive",
@@ -57,12 +57,6 @@ function DonateMenu() {
     useEffect(() => {
         changeStep()
     }, [activeStep])
-
-    let counter = 0
-    useEffect(() => {
-        counter++
-        console.log(counter)
-    })
 
     function changeStep(){
         let new_list = null;
@@ -165,7 +159,7 @@ function DonateMenu() {
 
 
         return (
-            <div className={`flex flex-col gap-10 items-center ${activeStep == 1 ? "block" : "hidden"}`}>
+            <div className={`flex flex-col gap-10 items-center ${activeStep == 1 ? "block" : "hidden"} step-1`}>
                 <div className="flex gap-large">
                     {amountList.map((item) => (
                         <ValueButton text={item.value} key={item.id} index={item.id} isActive={activeAmountItem == item.id} click={onPriceClicked} />
@@ -181,18 +175,18 @@ function DonateMenu() {
 
     function Step2(){
         return (
-            <div className={`flex flex-col gap-10 items-center ${activeStep == 2 ? "block" : "hidden"}`}>
+            <div className={`flex flex-col gap-10 items-center ${activeStep == 2 ? "block" : "hidden"} step-2`}>
                 <div className="flex flex-col lg:flex-row items-start lg:items-center">
                     <h3 className="text-body-big">you are donating <span className="text-subheading text-secondary">{selectedAmount}</span> for Future</h3>
                     <button className="bg-primary-lite rounded-3xl mt-4 lg:ms-4 text-body-big py-2 px-6 text-secondary" onClick={onEditAmount}>Edit</button>
                 </div>
-                <div className="p-md bg-surface-color text-center text-secondary font-body border-secondary border-[1px] rounded-2xl w-full max-w-[27rem]">
+                <div className="p-md bg-surface-color text-center text-secondary font-body border-secondary border-[1px] rounded-2xl w-full max-w-[27rem] input-1">
                     <input type="text" className="bg-surface-color outline-none w-full text-center" placeholder="Enter your name" ref={inputName} />
                 </div>
-                <div className="p-md bg-surface-color text-center text-secondary font-body border-secondary border-[1px] rounded-2xl w-full max-w-[27rem]">
+                <div className="p-md bg-surface-color text-center text-secondary font-body border-secondary border-[1px] rounded-2xl w-full max-w-[27rem] input-2">
                     <input type="text" className="bg-surface-color outline-none w-full text-center" placeholder="Enter your phone number" ref={inputPhone} />
                 </div>
-                <div className="p-md bg-surface-color text-center text-secondary font-body border-secondary border-[1px] rounded-2xl w-full max-w-[27rem]">
+                <div className="p-md bg-surface-color text-center text-secondary font-body border-secondary border-[1px] rounded-2xl w-full max-w-[27rem] input-3">
                     <input type="text" className="bg-surface-color outline-none w-full text-center" placeholder="Enter Email ID" ref={inputEmail} />
                 </div>
                 <button className="button-primary hover: w-full" onClick={onStepsChange}>Next</button>
@@ -202,7 +196,7 @@ function DonateMenu() {
 
     function Step3(){
         return (
-            <div className={`flex flex-col gap-10 items-center ${activeStep == 3 ? "block" : "hidden"}`}>
+            <div className={`flex flex-col gap-10 items-center ${activeStep == 3 ? "block" : "hidden"} step-3`}>
                 <div className="flex flex-col lg:flex-row items-start lg:items-center">
                     <h3 className="text-body-big">you are donating <span className="text-subheading text-secondary">{selectedAmount}</span> for Future</h3>
                     <button className="bg-primary-lite rounded-3xl mt-4 lg:ms-4 text-body-big py-2 px-6 text-secondary" onClick={onEditAmount}>Edit</button>
@@ -216,17 +210,17 @@ function DonateMenu() {
     }
 
     function onSubmit(){
-        const data = {
-            amount: selectedAmount,
-            name: inputName.current.value,
-            email: inputEmail.current.value,
-            phone: inputPhone.current.value
-        }
-        console.log(inputName.current.value)
+        // const data = {
+        //     amount: selectedAmount,
+        //     name: inputName.current.value,
+        //     email: inputEmail.current.value,
+        //     phone: inputPhone.current.value
+        // }
+        // console.log(inputName.current.value)
     }
 
     return (
-        <section className="p-0 lg:section-container fixed top-0 bottom-0 left-0 w-full h=full overflow-auto z-[10000] shadow-2xl bg-secondary bg-opacity-50 max-h-screen">
+        <section className={`p-0 lg:section-container fixed top-0 bottom-0 left-0 w-full h=full overflow-auto z-[10000] shadow-2xl bg-secondary bg-opacity-50 max-h-screen ${className}`}>
             <div className="flex flex-col lg:flex-row justify-center mx-auto max-w-[79.75rem]">
                 <div className="w-full lg:w-1/2 max-w-[38.68rem] relative">
                     <Image src={donate_menu_bg} alt="Donate Image" className="w-full h-auto" unoptimized />

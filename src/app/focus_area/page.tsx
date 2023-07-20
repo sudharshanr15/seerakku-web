@@ -1,5 +1,5 @@
 import { PageHeader } from "@/component"
-import DonateMenu from "@/component/DonateMenu"
+import DonateMenuWrapper from "@/component/DonateMenu/DonateMenuWrapper"
 import { Cards } from "@/container/focus_area"
 
 import type { Metadata } from 'next'
@@ -19,7 +19,7 @@ function FocusArea(){
                 </div>
             </section>
             <Cards />
-            {/* <DonateMenu /> */}
+            <DonateMenuWrapper />
         </main>
     )
 }
