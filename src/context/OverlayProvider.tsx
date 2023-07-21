@@ -8,10 +8,14 @@ export const OverlayDispatchContext = createContext(null)
 function OverlayProvider({children}: {
     children: React.ReactNode
   }){
-    const [overlayOpen, overlayDispatch] = useReducer(handleOverlay, true)
+    const [overlayOpen, overlayDispatch] = useReducer(handleOverlay, false)
 
     function handleOverlay(status, action){
         switch(action.type){
+            case "open":
+                return true
+            case "close":
+                return false
             case "toggle":
                 return !status
             default:

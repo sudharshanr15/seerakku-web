@@ -7,6 +7,7 @@ import Footer from '@/component/Footer'
 import OverlayProvider from '@/context/OverlayProvider'
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import DonateMenuWrapper from '@/component/DonateMenu/DonateMenuWrapper'
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -31,6 +32,7 @@ export default function RootLayout({
         <NavBar />
           {children}
         <Footer />
+        <DonateMenuWrapper />
         </OverlayProvider>
         <ToastContainer />
       </body>

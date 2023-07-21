@@ -5,11 +5,13 @@ import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { gsap } from "gsap";
-import { useEffect, useRef } from "react";
+import { useContext, useEffect, useRef } from "react";
+import { OverlayDispatchContext } from "@/context/OverlayProvider";
 
 function DonateButton({text="Donate Now", className}: {text?: string, className?: string}){
     const icon = useRef(null)
-
+    const overlayDispatch = useContext(OverlayDispatchContext)
+    
     useEffect(() => {
         gsap.from(icon.current, {
             scale: 0.6,
@@ -21,11 +23,11 @@ function DonateButton({text="Donate Now", className}: {text?: string, className?
     }, [])
 
     return (
-        <button className={`button-primary text-body-bold ${className}`}>
-            <Link href={""} className="flex gap-md">
+        <button className={`button-primary text-body-bold flex gap-md ${className}`} onClick={() => {overlayDispatch({type: "open"})}}>
+            {/* <Link href={""} className="flex gap-md"> */}
                 <FontAwesomeIcon icon={faHeart} className="w-[16px]" ref={icon} />
                 <span>{text}</span>
-            </Link>
+            {/* </Link> */}
         </button>
     )
 }

@@ -19,7 +19,6 @@ function FocusArea(){
                 </div>
             </section>
             <Cards />
-            <DonateMenuWrapper />
         </main>
     )
 }
