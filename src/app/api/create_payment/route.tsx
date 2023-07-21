@@ -24,7 +24,7 @@ export async function POST(request: Request){
         email,
         phone,
         purpose: "Test",
-        redirect_url: "http://localhost:3000"
+        redirect_url: "https://seerakku.org"
     }
 
     var headers = new Headers();
