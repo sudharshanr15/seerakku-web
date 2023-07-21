@@ -23,11 +23,12 @@ export async function POST(request: Request){
         buyer_name,
         email,
         phone,
-        purpose: "Test"
+        purpose: "Test",
+        redirect_url: "http://localhost:3000"
     }
 
     var headers = new Headers();
-    headers.append("Authorization", "Bearer KKbn5po_zYDyyiHlbuktpWGxQaxfx-wQfq-D1xZmOsw.lZGY4FOFVs5c8tDAcgffI1SVvWWpWalC2MTfgKZPsV8");
+    headers.append("Authorization", "Bearer IQZ8mBckQ8N2W4b9rm9qNvmcATbRLf4yz3g8B8d7F7c.huP1o2T5X6rWPmH-KNvpUWhpmiGiCh1FadXXDoJa6ew");
     headers.append("Content-type", "application/json")
     
     try{
@@ -36,7 +37,16 @@ export async function POST(request: Request){
             headers: headers,
             body: JSON.stringify(body)
         })
+
+        const {status} = await res
         const res_data = await res.json()
+
+        if(!res.ok){
+            return NextResponse.json({
+                "message": "Unable to Process request",
+                data: res_data
+            }, {status: status})    
+        }
 
         return NextResponse.json(
             {
@@ -44,6 +54,7 @@ export async function POST(request: Request){
                     "id": res_data.id,
                     "longurl": res_data.longurl
                 },
+                res: res.status,
                 original_data: res_data
             }
         )    

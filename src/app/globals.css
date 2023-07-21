@@ -30,7 +30,8 @@
     }
 
     .section-container-tear{
-        position: relative
+        position: relative;
+        z-index: 0;
     }
 
     .section-container-tear::before{

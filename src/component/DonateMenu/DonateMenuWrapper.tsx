@@ -1,6 +1,6 @@
 'use client';
 
-import DonateMenu from "./DonateMenu";
+import DonateMenu2 from "./DonateMenu2";
 import { useContext } from "react"
 import { OverlayContext, OverlayDispatchContext } from "@/context/OverlayProvider"
 
@@ -10,7 +10,7 @@ function DonateMenuWrapper(){
     const overlayDispatch = useContext(OverlayDispatchContext)
 
     return (
-        (overflow == true) ? <DonateMenu /> : <></>
+        (overflow == true) ? <DonateMenu2 /> : <></>
     )
 }
 

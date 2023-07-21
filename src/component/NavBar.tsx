@@ -83,7 +83,7 @@ function Navbar() {
   }
 
   return (
-    <header className="sticky top-0 bg-surface-color z-[10000]">
+    <header className="sticky top-0 bg-surface-color z-50">
       <nav className="flex flex-row p-large justify-between items-center bg-surface-color">
         <Link href={"/"} className="inline-flex items-center gap-4">
           <Image src={logo} alt="Brand Logo" className="w-12" unoptimized />

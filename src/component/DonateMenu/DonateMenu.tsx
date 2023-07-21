@@ -23,72 +23,78 @@ function ValueButton({ text, click, index, isActive = false }: {
     )
 }
 
+enum StepsStatus {
+    Inactive = "inactive",
+    Active = "active",
+    Completed = "completed"
+}
+
 function DonateMenu({className=""}) {
     const [selectedAmount, setSelectedAmount]: [number, any] = useState(0);
     const [activeAmountItem, setActiveAmountItem] = useState(-1)
-    const inputAmount = useRef(null)
 
-    const inputName = useRef(null)
-    const inputPhone = useRef(null)
-    const inputEmail = useRef(null)
+    const [inputValues, setInputValues]: [any, any] = useState({
+        name: "",
+        phone: "",
+        email: "",
+        amount: null
+    })
 
-    enum StepsStatus {
-        Inactive = "inactive",
-        Active = "active",
-        Completed = "completed"
+    function handleInputChange(e: any){
+        const {name, value} = e.target;
+        setInputValues(prev => ({
+            ...prev,
+            [name]: value
+        }))
     }
-    
-    const [stepsList, setStepsList] = useState([
+
+    const stepsList = [
         {
             id: 1,
-            name: "Select the amount",
-            status: StepsStatus.Active
+            name: "Select the amount"
         },
         {
             id: 2,
-            name: "Enter the Details",
-            status: StepsStatus.Inactive
+            name: "Enter the Details"
         },
         {
             id: 3,
-            name: "Payment",
-            status: StepsStatus.Inactive
+            name: "Payment"
         }
-    ])
+    ]
+    
     const [activeStep, setActiveStep] = useState(1)
 
-    useEffect(() => {
-        changeStep()
-    }, [activeStep])
+    // useEffect(() => {
+    //     changeStep()
+    // }, [activeStep])
 
-    function changeStep(){
-        let new_list = null;
+    // function changeStep(){
+    //     let new_list = null;
 
-        let active_step = activeStep;
+    //     let active_step = activeStep;
 
-        new_list = stepsList.map((item, index) => {
-            let status = null;
+    //     new_list = stepsList.map((item, index) => {
+    //         let status = null;
             
-            if(index+1 == active_step){
-                status = StepsStatus.Active
-            }else if(index+1 < active_step){
-                status = StepsStatus.Completed
-            }else{
-                status = StepsStatus.Inactive
-            }
+    //         if(index+1 == active_step){
+    //             status = StepsStatus.Active
+    //         }else if(index+1 < active_step){
+    //             status = StepsStatus.Completed
+    //         }else{
+    //             status = StepsStatus.Inactive
+    //         }
 
-            return {
-                ...item,
-                status: status
-            }
-        })
+    //         return {
+    //             ...item,
+    //             status: status
+    //         }
+    //     })
 
-        setStepsList(new_list)
-    }
+    //     setStepsList(new_list)
+    // }
 
     function onStepsChange(){
-        console.log(inputName.current.value)
-        console.log(inputEmail.current.value)
         setActiveStep(prev => (++prev))
     }
 
@@ -121,7 +127,7 @@ function DonateMenu({className=""}) {
         ])
 
         function onDonate(){
-            let input_value = inputAmount.current?.value
+            let input_value = inputValues.amount
             if(input_value == false && activeAmountItem == -1){
                 console.log("TODO: Throw error")
                 return
@@ -162,14 +168,14 @@ function DonateMenu({className=""}) {
 
 
         return (
-            <div className={`flex flex-col gap-10 items-center ${activeStep == 1 ? "block" : "hidden"} step-1`}>
+            <div className={`flex flex-col gap-10 items-center hidden step-1`}>
                 <div className="flex gap-large">
                     {amountList.map((item) => (
                         <ValueButton text={item.value} key={item.id} index={item.id} isActive={activeAmountItem == item.id} click={onPriceClicked} />
                     ))}
                 </div>
                 <div className="p-md bg-surface-color text-center text-secondary font-body border-secondary border-[1px] rounded-2xl w-full max-w-[27rem]">
-                    <input type="text" className="bg-surface-color outline-none w-full text-center" placeholder="Enter the amount" ref={inputAmount} />
+                    <input type="text" className="bg-surface-color outline-none w-full text-center" name="amount" placeholder="Enter the amount" value={inputValues.amount} />
                 </div>
                 <button className="button-primary hover: w-full" onClick={onDonate}>Donate</button>
             </div>
@@ -178,19 +184,19 @@ function DonateMenu({className=""}) {
 
     function Step2(){
         return (
-            <div className={`flex flex-col gap-10 items-center ${activeStep == 2 ? "block" : "hidden"} step-2`}>
+            <div className={`flex flex-col gap-10 items-center step-2`} key={"activeStep"}>
                 <div className="flex flex-col lg:flex-row items-start lg:items-center">
                     <h3 className="text-body-big">you are donating <span className="text-subheading text-secondary">{selectedAmount}</span> for Future</h3>
                     <button className="bg-primary-lite rounded-3xl mt-4 lg:ms-4 text-body-big py-2 px-6 text-secondary" onClick={onEditAmount}>Edit</button>
                 </div>
                 <div className="p-md bg-surface-color text-center text-secondary font-body border-secondary border-[1px] rounded-2xl w-full max-w-[27rem] input-1">
-                    <input type="text" className="bg-surface-color outline-none w-full text-center" placeholder="Enter your name" ref={inputName} />
+                    <input type="text" className="bg-surface-color outline-none w-full text-center" name="name" placeholder="Enter your name" value={inputValues.name} onChange={handleInputChange} />
                 </div>
                 <div className="p-md bg-surface-color text-center text-secondary font-body border-secondary border-[1px] rounded-2xl w-full max-w-[27rem] input-2">
-                    <input type="text" className="bg-surface-color outline-none w-full text-center" placeholder="Enter your phone number" ref={inputPhone} />
+                    <input type="text" className="bg-surface-color outline-none w-full text-center" name="phone" placeholder="Enter your phone number" />
                 </div>
                 <div className="p-md bg-surface-color text-center text-secondary font-body border-secondary border-[1px] rounded-2xl w-full max-w-[27rem] input-3">
-                    <input type="text" className="bg-surface-color outline-none w-full text-center" placeholder="Enter Email ID" ref={inputEmail} />
+                    <input type="text" className="bg-surface-color outline-none w-full text-center" name="email" placeholder="Enter Email ID" />
                 </div>
                 <button className="button-primary hover: w-full" onClick={onStepsChange}>Next</button>
             </div>
@@ -199,7 +205,7 @@ function DonateMenu({className=""}) {
 
     function Step3(){
         return (
-            <div className={`flex flex-col gap-10 items-center ${activeStep == 3 ? "block" : "hidden"} step-3`}>
+            <div className={`flex flex-col gap-10 items-center hidden step-3`}>
                 <div className="flex flex-col lg:flex-row items-start lg:items-center">
                     <h3 className="text-body-big">you are donating <span className="text-subheading text-secondary">{selectedAmount}</span> for Future</h3>
                     <button className="bg-primary-lite rounded-3xl mt-4 lg:ms-4 text-body-big py-2 px-6 text-secondary" onClick={onEditAmount}>Edit</button>
@@ -213,13 +219,7 @@ function DonateMenu({className=""}) {
     }
 
     function onSubmit(){
-        // const data = {
-        //     amount: selectedAmount,
-        //     name: inputName.current.value,
-        //     email: inputEmail.current.value,
-        //     phone: inputPhone.current.value
-        // }
-        // console.log(inputName.current.value)
+        console.log(inputValues)
     }
 
     const overlayDispatch = useContext(OverlayDispatchContext)

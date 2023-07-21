@@ -5,6 +5,8 @@ import { Inter } from 'next/font/google'
 import NavBar from '@/component/NavBar'
 import Footer from '@/component/Footer'
 import OverlayProvider from '@/context/OverlayProvider'
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -24,12 +26,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="data-[has-overlay=true]:overflow-hidden data-[has-overlay=true]:bg-secondary data-[has-overlay=true]:bg-opacity-50">
-        <NavBar />
+      <body className="data-[has-overlay=true]:overflow-hidden">
         <OverlayProvider>
+        <NavBar />
           {children}
-        </OverlayProvider>
         <Footer />
+        </OverlayProvider>
+        <ToastContainer />
       </body>
     </html>
   )
