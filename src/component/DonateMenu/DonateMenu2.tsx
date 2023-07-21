@@ -227,7 +227,7 @@ function DonateMenu2(){
                                     <Image src={logo} alt="Brand Logo" className="w-[3.2rem] h-auto" />
                                     <span className="font-squada-one text-heading-4">SEERAKKU</span>
                                 </div>
-                                <button className="h-[2.5rem]" onClick={() => {overlayDispatch({type: 'toggle'})}}>
+                                <button className="h-[2.5rem]" onClick={() => {overlayDispatch({type: 'close'})}}>
                                     <FontAwesomeIcon icon={faXmark} className="h-full w-auto" />
                                 </button>
                             </div>

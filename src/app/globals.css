@@ -29,11 +29,6 @@
         @apply p-md py-xl lg:p-xxl;
     }
 
-    .section-container-tear{
-        position: relative;
-        z-index: 0;
-    }
-
     .section-container-tear::before{
         content: "";
         height: 70px;
@@ -58,6 +53,11 @@
 }
 
 @layer components{
+    .section-container-tear{
+        position: relative;
+        @apply z-0;
+    }
+    
     .button-primary{
         @apply bg-primary hover:bg-accent text-dark-text text-subheading rounded-full py-md px-large transition-colors;
     }
@@ -151,4 +151,10 @@
 .our-sponsors-section{
     background: url("/images/paper-bg.png");
     background-size: cover;
+}
+
+.donate-thanks-container > .donate-thanks-img{
+    background: url("/images/slide-bg_1.png");
+    background-size: cover;
+    background-repeat: no-repeat;
 }

@@ -23,7 +23,7 @@ function DonateButton({text="Donate Now", className}: {text?: string, className?
     }, [])
 
     return (
-        <button className={`button-primary text-body-bold flex gap-md ${className}`} onClick={() => {overlayDispatch({type: "open"})}}>
+        <button className={`button-primary text-body-bold flex gap-md ${className}`} onClick={() => {overlayDispatch({type: "open", component: "DonateMenu"})}}>
             {/* <Link href={""} className="flex gap-md"> */}
                 <FontAwesomeIcon icon={faHeart} className="w-[16px]" ref={icon} />
                 <span>{text}</span>
