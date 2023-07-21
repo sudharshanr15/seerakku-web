@@ -11,10 +11,12 @@ import Initiatives from "@/component/Initiatives";
 import GetInvolved from "@/component/GetInvolved";
 import Sponsers from "@/component/Sponsers";
 import { Hero } from "@/container/home";
+import HandleOverlay from "@/container/home/HandleOverlay";
 
 function page() {
   return (
     <>
+    <HandleOverlay />
       <Hero />
       <Donate />
       <Initiatives />
