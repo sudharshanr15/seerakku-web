@@ -10,7 +10,7 @@ import Link from "next/link";
 
 function Donate() {
   return (
-    <section className="section-container-tear bg-primary-lite before:content-[]">
+    <section className="section-container-tear bg-primary-lite before:content-[] z-10">
       <div className="section-container relative">
         <Link href={""} className="absolute top-0 right-1/2 lg:right-0 translate-x-1/2 z-10 max-w-[9rem] lg:max-w-[16rem] -translate-y-1/2 lg:-translate-x-1/2">
           <Image src={Ellipse} className="w-full h-auto" />

@@ -16,7 +16,7 @@ import HandleOverlay from "@/container/home/HandleOverlay";
 function page() {
   return (
     <>
-    <HandleOverlay />
+      <HandleOverlay />
       <Hero />
       <Donate />
       <Initiatives />

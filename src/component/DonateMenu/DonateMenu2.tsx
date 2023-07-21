@@ -11,7 +11,7 @@ import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-export async function create_payment_request(body){
+export async function create_payment_request(body: any){
     var headers = new Headers();
     headers.append("Content-Type", "application/json");
 
@@ -143,7 +143,7 @@ function DonateMenu2(){
     useEffect(() => {
         let amount = amountList[selectedAmount]?.value
         if(amount !== undefined)
-            setInputValues(prev => ({
+            setInputValues((prev: any) => ({
                 ...prev,
                 amount: String(amount)
             }))
@@ -152,7 +152,7 @@ function DonateMenu2(){
 
     function handleInputChange(e: any){
         const {name, value} = e.target;
-        setInputValues(prev => ({
+        setInputValues((prev: any) => ({
             ...prev,
             [name]: value
         }))
@@ -160,6 +160,7 @@ function DonateMenu2(){
 
     function onDonate(){
         let amount: string | number = inputValues.amount
+        amount = String(amount)
         if(amount.length == 0){
             toast.error("Amount should not be empty", {
                 position: 'top-right',
@@ -190,8 +191,8 @@ function DonateMenu2(){
         let res = await create_payment_request(inputValues)
         const data = await res.json()
         if(!res.ok){
-            Object.values(data['data']).forEach((item) => {
-                let value = Object.values(item)[0]
+            Object.values(data['data']).forEach((item: any) => {
+                let value: any = Object.values(item)[0]
                 toast.error(value, {
                     position: 'top-right',
                     autoClose: 5000,

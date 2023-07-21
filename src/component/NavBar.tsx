@@ -33,7 +33,7 @@ const nav_list = [
   },
   {
     name: "Contact us",
-    href: "",
+    href: "/contact",
   },
 
 ]

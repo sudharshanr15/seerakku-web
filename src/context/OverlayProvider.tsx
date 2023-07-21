@@ -28,7 +28,7 @@ function OverlayProvider({children}: {
 
     useEffect(() => {
         console.log(overlayOpen)
-        if(overlayOpen == false){
+        if(overlayOpen.status == false){
             document.querySelector("body")!.dataset.hasOverlay = "false" 
         }else{
             document.querySelector("body")!.dataset.hasOverlay = "true" 
