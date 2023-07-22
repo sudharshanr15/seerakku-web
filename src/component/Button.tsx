@@ -10,7 +10,7 @@ type Button = {
 function Button({ text, icon=<></>, href = "", className = "" }: Button){
     return (
         <button className={className} >
-            <Link href={href} className="flex items-center gap-md">
+            <Link href={href} className="flex justify-center items-center gap-md">
                 {icon}
                 {text}
             </Link>

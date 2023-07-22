@@ -2,7 +2,7 @@ import { Button } from "@/component"
 
 function JoinUs(){
     return (
-        <section className="section-container-tear bg-primary-lite">
+        <section className="section-container-tear bg-primary-lite mb-large">
             <div className="section-container flex flex-col lg:items-center gap-xl">
                 <h2 className="text-heading-1 uppercase font-squada-one">JOIN US</h2>
                 <p className="text-body-big">Join us in these initiatives and be a part of the positive change we are creating. Together, we can make a lasting impact on the environment, foster sustainability, and ensure a better future for all.</p>

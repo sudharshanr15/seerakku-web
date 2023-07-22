@@ -59,11 +59,11 @@
     }
     
     .button-primary{
-        @apply bg-primary hover:bg-accent text-dark-text text-subheading rounded-full py-md px-large transition-colors;
+        @apply bg-primary hover:bg-accent text-center text-dark-text text-subheading rounded-full py-md px-large transition-colors;
     }
     
     .button-accent{
-        @apply bg-accent text-white text-subheading rounded-full py-md px-large transition-colors;
+        @apply bg-accent text-center text-white text-subheading rounded-full py-md px-large transition-colors;
     }
 
     .nav-link{
