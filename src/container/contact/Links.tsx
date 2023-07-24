@@ -6,8 +6,8 @@ import { faInstagram, faFacebook, faYoutube } from "@fortawesome/free-brands-svg
 
 function Links(){
     return (
-        <div className="bg-primary-lite p-large lg:p-xxl rounded-2xl lg:rounded-3xl">
-            <div className="flex flex-col gap-8">
+        <div className="bg-primary-lite p-large xl:p-xl 2xl:p-xxl rounded-2xl lg:rounded-3xl">
+            <div className="flex flex-col gap-8 break-word">
                 <h3 className="text-subheading text-black">Follow us on</h3>
                 <div className="flex gap-large">
                     <Link href="" target="_blank" className="h-[2.1rem] inline-block text-secondary"><FontAwesomeIcon className="h-full w-auto" icon={faFacebook} /></Link>

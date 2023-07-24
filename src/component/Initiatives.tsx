@@ -65,17 +65,17 @@ function Initiatives() {
 
   return (
     <section className="section-container">
-      <div className="flex flex-col gap-large items-center">
+      <div className="flex flex-col gap-large items-center justify-center max-w-[75rem] mx-auto">
         <h1 className="text-center text-black text-heading-3 lg:text-heading-2 font-squada-one">
           Our Initiatives
         </h1>
-        <p className="w-full lg:w-1/2 mx-auto text-center klima text-black text-2xl">
+        <p className="w-full mx-auto text-center klima text-black text-2xl">
           At Seerakku, we are dedicated to creating a sustainable future through
           our various initiatives. Join us in making a positive impact and
           contributing to environmental conservation with the following programs:
         </p>
         <Button text="View Details" className="button-accent w-fit" />
-        <div className="flex flex-wrap gap-large justify-center max-w-[75rem]">
+        <div className="flex flex-wrap gap-large justify-center">
           {Initiatives_list.map((item, index) => (
             <Card {...item} key={index} />
           ))}

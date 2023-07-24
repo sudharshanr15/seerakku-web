@@ -15,13 +15,13 @@ function Donate() {
         <Link href={""} className="absolute top-0 right-1/2 lg:right-0 translate-x-1/2 z-10 max-w-[9rem] lg:max-w-[16rem] -translate-y-1/2 lg:-translate-x-1/2">
           <Image src={Ellipse} className="w-full h-auto" />
         </Link>
-        <div className="flex flex-col gap-md lg:flex-row">
+        <div className="flex flex-col gap-md lg:flex-row lg:p-xl">
           <div className="basis-1/2">
             <div className="max-w-[43rem] mx-auto">
               <Image src={Support} alt="Support Tree" className="w-full h-auto" unoptimized />
             </div>
           </div>
-          <div className="basis-1/2 lg:p-xl flex flex-col gap-large">
+          <div className="basis-1/2 flex flex-col gap-large">
             <h1 className="font-squada-one text-heading-3 lg:text-heading-2">
               Support For<br/>Sustainability
             </h1>

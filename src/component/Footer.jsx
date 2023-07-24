@@ -46,7 +46,7 @@ function Footer(){
               <div className="flex flex-col gap-xl">
                 <div className="flex gap-4">
                   <Image src={logo} alt="Brand Logo" className="w-[3.2rem]" />
-                  <span className="text-heading-4 font-squada-one">Seeraku</span>
+                  <span className="text-heading-4 font-squada-one">Seerakku</span>
                 </div>
                 <div className="flex flex-col gap-8 text-body-bold lg:text-subheading">
                   <p className="inline-flex items-center">

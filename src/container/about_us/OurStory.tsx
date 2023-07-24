@@ -28,7 +28,7 @@ function OurStory() {
                 </div>
                 <div className="w-full lg:w-1/2">
                     <div className="flex flex-wrap justify-center gap-md">
-                        <div className="flex justify-center gap-md w-100">
+                        <div className="flex justify-center gap-md w-full">
                             <Image src={our_story_1} alt="Our Story 1" className="max-w-[19.6rem] w-full" />
                             <Image src={our_story_2} alt="Our Story 2" className="max-w-[19.6rem] w-full" />
                         </div>

@@ -47,7 +47,7 @@ function DonateThanks(){
                         <div className="flex items-end justify-center h-full">
                             <div className="flex items-center gap-md">
                                 <Image src={logo} alt="Brand Logo" className="w-[3.2rem] h-auto" />
-                                <span className="text-heading-4 font-squada-one lg:text-heading-1 text-white">SEERAKKU</span>
+                                <span className="text-heading-4 font-squada-one lg:text-heading-1 text-white">Seerakku</span>
                             </div>
                         </div>
                     </div>

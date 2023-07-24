@@ -249,7 +249,7 @@ function DonateMenu2(){
                             <div className="flex justify-between items-center">
                                 <div className="flex items-center gap-md">
                                     <Image src={logo} alt="Brand Logo" className="w-[3.2rem] h-auto" />
-                                    <span className="font-squada-one text-heading-4">SEERAKKU</span>
+                                    <span className="font-squada-one text-heading-4 text-secondary">Seerakku</span>
                                 </div>
                                 <button className="h-[2.5rem]" onClick={handleClose}>
                                     <FontAwesomeIcon icon={faXmark} className="h-full w-auto" />

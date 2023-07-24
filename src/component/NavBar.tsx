@@ -87,7 +87,7 @@ function Navbar() {
       <nav className="flex flex-row p-large justify-between items-center bg-surface-color">
         <Link href={"/"} className="inline-flex items-center gap-4">
           <Image src={logo} alt="Brand Logo" className="w-12" unoptimized />
-          <span className="text-heading-4 font-squada-one text-secondary">Seeraku</span>
+          <span className="text-heading-4 font-squada-one text-secondary">Seerakku</span>
         </Link>
         <ul className="flex-row gap-16 font-squada-one text-dark-text hidden xl:flex">
           {nav_list.map((item, index) => (
@@ -107,7 +107,7 @@ function Navbar() {
             <header className="flex justify-between w-full">
               <Link href={"/"} className="inline-flex items-center gap-4">
                 <Image src={logo} alt="Brand Logo" className="w-12" unoptimized />
-                <span className="text-heading-4 font-squada-one text-secondary">Seeraku</span>
+                <span className="text-heading-4 font-squada-one text-secondary">Seerakku</span>
               </Link>
               <button onClick={onMenu}>
                 <FontAwesomeIcon icon={faXmark} className="w-[2.5rem] h-[2.5rem]" />
