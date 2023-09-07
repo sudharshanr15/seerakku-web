@@ -18,11 +18,12 @@
 
 @layer utilities{
     .page-header{
-        background: url("/images/green-forest.png");
+        background: url("/images/forest_with_water.png");
         background-repeat: no-repeat;
         background-size: cover;
+        background-position: center;
 
-        @apply flex items-center justify-center h-[28.25rem] lg:h-[18.75rem] min-h-[28.25rem] lg:min-h-[18.75rem];
+        @apply flex justify-center items-start flex-col h-[28.25rem] lg:h-[28.75rem] min-h-[28.25rem] lg:min-h-[18.75rem];
     }
 
     .section-container{
@@ -34,8 +35,10 @@
         height: 70px;
         background: url("/images/page-tear.svg");
         background-repeat-y: no-repeat;
+        overflow: hidden;
         
-        @apply absolute top-0 left-0 right-0 -translate-y-[40%] lg:-translate-y-[4%];
+        @apply absolute top-0 left-0 right-0 -translate-y-[4%] lg:-translate-y-[4%];
+        /* @apply absolute top-0 left-0 right-0 -translate-y-[40%] lg:-translate-y-[4%]; */
     }
     
     .section-container-tear::after{
@@ -44,7 +47,29 @@
         background: url("/images/page-tear-bottom.svg");
         background-repeat-y: no-repeat;
         
-        @apply absolute bottom-0 left-0 right-0 translate-y-1/2 lg:translate-y-2/3;
+        @apply absolute bottom-0 left-0 right-0 translate-y-3/4;
+        /* @apply absolute bottom-0 left-0 right-0 translate-y-3/4 lg: -translate-y-2/3; */
+    }
+
+    .section-bottom-tear::after{
+        content: "";
+        height: 70px;
+        background: url("/images/page-tear-bottom.svg");
+        background-repeat-y: no-repeat;
+    
+        @apply absolute bottom-0 left-0 right-0 translate-y-3/4;
+        /* @apply absolute bottom-0 left-0 right-0 translate-y-3/4 lg: -translate-y-2/3; */
+    }
+
+    .section-top-tear{
+        content: "";
+        height: 70px;
+        background: url("/images/page-tear.svg");
+        background-repeat-y: no-repeat;
+        overflow: hidden;
+    
+        @apply absolute top-0 left-0 right-0 -translate-y-[4%] lg: -translate-y-[4%];
+        /* @apply absolute top-0 left-0 right-0 -translate-y-[40%] lg:-translate-y-[4%]; */
     }
 
     .break-word{
@@ -54,6 +79,18 @@
 
 @layer components{
     .section-container-tear{
+        position: relative;
+        padding-top: 1rem;
+        @apply z-0;
+    }
+
+    .section-bottom-tear{
+        position: relative;
+        @apply z-0;
+    }
+
+    .section-top-tear{
+        padding-top: 1rem;
         position: relative;
         @apply z-0;
     }

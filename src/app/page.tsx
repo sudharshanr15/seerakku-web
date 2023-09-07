@@ -22,7 +22,7 @@ function page() {
       <Donate />
       <Initiatives />
       <GetInvolved />
-      <Gallery />
+      <Gallery isShowAllImages={false} isViewAllBtn={true}/>
       <Sponsers />
     </>
   );

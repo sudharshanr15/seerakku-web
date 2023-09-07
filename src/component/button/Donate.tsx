@@ -8,7 +8,7 @@ import { gsap } from "gsap";
 import { useContext, useEffect, useRef } from "react";
 import { OverlayDispatchContext } from "@/context/OverlayProvider";
 
-function DonateButton({text="Donate Now", className}: {text?: string, className?: string}){
+function DonateButton({text="Donate Today", className}: {text?: string, className?: string}){
     const icon = useRef(null)
     const overlayDispatch = useContext(OverlayDispatchContext)
     

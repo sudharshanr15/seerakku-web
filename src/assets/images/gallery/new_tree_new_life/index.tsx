@@ -1,0 +1,6 @@
+export {default as image1} from './Rectangle 62.png'
+export {default as image2} from './Rectangle 63.png'
+export {default as image3} from './Rectangle 64.png'
+export {default as image4} from './Rectangle 67.png'
+export {default as image5} from './Rectangle 65.png'
+export {default as image6} from './Rectangle 66.png'

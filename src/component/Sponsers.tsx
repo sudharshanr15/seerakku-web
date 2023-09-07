@@ -13,15 +13,12 @@ type SponsorsType = {
   image: StaticImageData
 }
 
-const SponsorsList: SponsorsType[] = [
+const PartnersList: SponsorsType[] = [
   {
     title: "Kauvery Hospital",
     link: "",
     image: Kauvery,
-  }
-]
-
-const PartnersList: SponsorsType[] = [
+  },
   {
     title: "Neulancers",
     link: "https://neulancers.com",
@@ -58,12 +55,6 @@ function Sponsers() {
   return (
     <section className="section-container our-sponsors-section">
       <div className="flex flex-col gap-large items-center px-xl">
-        <h2 className="text-heading-3 font-squada-one text-center uppercase">OUR SPONSORS</h2>
-        <div className="flex flex-wrap gap-large w-full justify-center">
-          {SponsorsList.map((item, index) => (
-            <Card {...item} key={index} />
-          ))}
-        </div>
         <h2 className="text-heading-3 font-squada-one text-center uppercase">OUR PARTNERS</h2>
         <div className="flex flex-wrap gap-large w-full justify-center">
           {PartnersList.map((item, index) => (

@@ -1,6 +1,7 @@
 import Image, { StaticImageData } from "next/image"
-import { our_initiatives_1, our_initiatives_2, our_initiatives_3, our_initiatives_4, our_initiatives_5, our_initiatives_6, our_initiatives_7 } from "@/assets/images"
-import TearSection from "./TearSection"
+import { our_initiatives_2, our_initiatives_3, our_initiatives_4, our_initiatives_5, our_initiatives_6, our_initiatives_7 } from "@/assets/images"
+import Link from "next/link"
+import { Button } from "@/component"
 
 type CardData = {
     id: number,
@@ -10,12 +11,6 @@ type CardData = {
 }
 
 const data: CardData[] = [
-    {
-        id: 1,
-        title: "NOVA",
-        desc: `NOVA, Carbon-Neutral Baby: NOVA is our flagship initiative that focuses on offsetting carbon emissions associated with newborns. <br/><br/>We believe that every child deserves a sustainable and healthy future. Through NOVA, we plant trees and create food forests in the name of each newborn, ensuring a carbon-neutral footprint for their lifetime.<br/><br/>Join us in celebrating the birth of a child while contributing to a greener planet.`,
-        image: our_initiatives_1
-    },
     {
         id: 2,
         title: "NEW TREE FOR NEW LIFE",
@@ -65,47 +60,23 @@ function Cards(){
         {data.map((item, index) => {
             let is_odd = (index % 2) != 0
             return (
-                <section className={`${is_odd ? '' : 'bg-primary-lite section-container-tear'}`} key={index}>
+                <section className={`${!is_odd ? '' : 'bg-primary-lite section-container-tear'}`} key={index}>
                     <div className="section-container">
                         <div className="flex items-center flex-wrap">
-                            <div className={`w-full lg:w-1/2 ${is_odd ? "lg:order-2" : ''}`}>
+                            <div className={`w-full lg:w-1/2 ${!is_odd ? "lg:order-2" : ''}`}>
                                 <Image src={item.image} alt="Get Involved image" className="w-full max-w-[632px] lg:mx-auto" unoptimized />
                             </div>
-                            <div className={`w-full lg:w-1/2 p-large ${is_odd ? "lg:order-1" : ''}`}>
+                            <div className={`w-full lg:w-1/2 p-large ${!is_odd ? "lg:order-1" : ''}`}>
                                 <h3 className="text-heading-2 mb-large font-squada-one uppercase">{item.title}</h3>
                                 <p className="mb-large text-body-big" dangerouslySetInnerHTML={{__html: item.desc}}></p>
+                                {/* <Link href='/our_gallery'>See Gallery</Link> */}
+                                <Button text="See Gallery" href="/our_gallery" className="bg-accent px-10 py-3 rounded-full text-white font-bold font-xl"></Button>
                             </div>
                         </div>
                     </div>
                 </section>
             )
         })}
-        {/* <section>
-            <div className="section-container">
-                <div className="flex items-center flex-wrap">
-                    <div className="w-full lg:w-1/2">
-                        <Image src={get_involved_1} alt="Get Involved image" className="w-full max-w-[632px] lg:mx-auto" unoptimized />
-                    </div>
-                    <div className="w-full lg:w-1/2 p-large">
-                        <h3 className="text-heading-2 mb-large font-squada-one uppercase">BECOME A VOLUNTEER</h3>
-                        <p className="mb-large text-body-big">Join our dedicated team of volunteers and actively participate in our initiatives.<br/><br/>Whether it's tree planting, water restoration, coastal plantation, or agroforestry, your time and effort can make a significant difference.<br/><br/>As a volunteer, you'll have the opportunity to connect with nature, learn new skills, and contribute directly to the well-being of our planet.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <TearSection>
-            <div className="section-container">
-                <div className="flex items-center flex-wrap">
-                    <div className="w-full lg:w-1/2">
-                        <Image src={get_involved_1} alt="Get Involved image" className="w-full max-w-[632px] lg:mx-auto" unoptimized />
-                    </div>
-                    <div className="w-full lg:w-1/2 p-large">
-                        <h3 className="text-heading-2 mb-large font-squada-one uppercase">BECOME A VOLUNTEER</h3>
-                        <p className="mb-large text-body-big">Join our dedicated team of volunteers and actively participate in our initiatives.<br/><br/>Whether it's tree planting, water restoration, coastal plantation, or agroforestry, your time and effort can make a significant difference.<br/><br/>As a volunteer, you'll have the opportunity to connect with nature, learn new skills, and contribute directly to the well-being of our planet.</p>
-                    </div>
-                </div>
-            </div>
-        </TearSection> */}
         </>
     )
 }
