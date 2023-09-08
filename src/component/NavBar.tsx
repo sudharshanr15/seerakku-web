@@ -5,57 +5,13 @@ import Link from "next/link";
 
 import logo from "../../public/logo/logo.svg";
 import { DonateButton } from "./button";
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext, useRef } from "react";
 import { gsap } from "gsap";
 import { faXmark, faAngleUp} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { menu } from "@/assets/icons";
 import { usePathname } from "next/navigation";
 import { OverlayContext, OverlayDispatchContext } from "@/context/OverlayProvider"
-
-// const nav_list = [
-//   {
-//     name: "About Us",
-//     href: "",
-//     sub_menu: [
-//       {
-//         name: 'Who we are',
-//         href: '/who_we_are'
-//       },
-//       {
-//         name: 'What we do',
-//         href: '/what_we_do'
-//       }
-//     ]
-//   },
-//   {
-//     name: "Our Initiatives",
-//     href: "",
-//     sub_menu: [
-//       {
-//         name: 'Our Initiatives',
-//         href: '/our_initiatives'
-//       },
-//       {
-//         name: 'Our Gallery',
-//         href: '/our_gallery'
-//       }
-//     ]
-//   },
-//   {
-//     name: "Our Focus Area",
-//     href: "/focus_area",
-//   },
-//   {
-//     name: "Get Involved",
-//     href: "/get_involved",
-//   },
-//   {
-//     name: "Contact us",
-//     href: "/contact",
-//   },
-
-// ]
 
 type NavbarLinkType = {
     [k: string]: {
@@ -80,10 +36,6 @@ const nav_list:NavbarLinkType = {
                         {
                           name: 'What we do',
                           href: '/what_we_do'
-                        },
-                        {
-                          name: 'Our Story',
-                          href: '/our_story'
                         }
                       ]
     },
@@ -122,6 +74,7 @@ function Navbar() {
   const pathname = usePathname()
   const [activeSubmenu, setActiveSubmenu] = useState("")
   const [isSubMenuOpen, setIsSubMenuOpen] = useState(false)
+  const tl = useRef()
 
   useEffect(() => {
     if (isMenuOpen) {
@@ -134,6 +87,28 @@ function Navbar() {
       })
     }
   }, [isMenuOpen])
+
+  useEffect(()=>{
+    if(isSubMenuOpen){
+      gsap.fromTo(('.navbar-submenu-wrapper'),{
+          height: 0,
+          duration: 0.5,
+
+        },{
+          duration: 0.5,
+          height:100,
+          ease: 'power3.out'
+        })
+    }else{
+      gsap.fromTo(('.navbar-submenu-wrapper'),{
+          height: 100
+        },{
+          yPercent: -100,
+          duration: 0.5,
+          height:0
+        })
+    }
+  },[isSubMenuOpen])
 
   function onMenu() {
     if (isMenuOpen) {
@@ -159,23 +134,18 @@ function Navbar() {
     onMenu()
   }
 
-  function onNavLinkClick(e: any){
-      e.preventDefault()
-      setActiveSubmenu(e.target.dataset.name)
-      console.log(e)
-      setIsSubMenuOpen(!isSubMenuOpen)
-  }
-
-
   function onNavSubMenuEnter(indexkey:string){
-    setActiveSubmenu(indexkey )
-    setIsSubMenuOpen(!isSubMenuOpen)
+    if(!activeSubmenu && indexkey){
+      setActiveSubmenu(indexkey)
+      setIsSubMenuOpen(!isSubMenuOpen)
+    }else if(activeSubmenu != indexkey){
+      setActiveSubmenu(indexkey )
+    }else{
+      setIsSubMenuOpen(!isSubMenuOpen)
+      setActiveSubmenu('')
+    }
   }
 
-  function onNavSubMenuLeave(event:any){
-    setActiveSubmenu("")
-    setIsSubMenuOpen(!isSubMenuOpen)
-  }
 
   return (
     <header className="sticky top-0 bg-surface-color z-50">
@@ -188,12 +158,12 @@ function Navbar() {
           {Object.entries(nav_list).map(([key, value], index) => (
             <li key={index} className="w-full whitespace-nowrap">
               <div className="relative" >
-                {value.sub_menu ? (<button key={key} onClick={()=>{onNavSubMenuEnter(key)}}>{value.name}<FontAwesomeIcon className="ml-3 h-5 w-5" icon={faAngleUp} /></button>) : (<Link href={value.href}>{value.name}</Link>)}
+                {value.sub_menu ? (<button key={key} onClick={()=>{onNavSubMenuEnter(key)}}>{value.name}<FontAwesomeIcon className="ml-3 h-5 w-5" icon={faAngleUp} /></button>) : (<Link href={value.href}>{value.name} <div className={pathname == value.href ? 'border-b-4 border-primary w-8/12 ' : ''}></div></Link>)}
                   {value.sub_menu && activeSubmenu===value.name && isSubMenuOpen &&  (
-                    <ul className="absolute top-10 bg-surface-color p-3">
+                    <ul className="absolute top-12 bg-surface-color px-4 rounded-md navbar-submenu-wrapper overflow-hidden" onMouseLeave={()=>{onNavSubMenuEnter(key)}}>
                       {value.sub_menu.map((subMenuItem, subIndex) => (
-                        <li key={subIndex}>
-                          <Link href={subMenuItem.href}>{subMenuItem.name}</Link>
+                        <li key={subIndex} onClick={()=>{setIsSubMenuOpen(!isSubMenuOpen); setActiveSubmenu('')}} className="my-2">
+                                <Link href={subMenuItem.href}>{subMenuItem.name}<div className={pathname == subMenuItem.href ? 'border-b-4 m-x-auto border-primary w-7/12' : ''}></div></Link>
                         </li>
                       ))}
                     </ul>
@@ -221,9 +191,20 @@ function Navbar() {
               </button>
             </header>
             <ul className="flex flex-col my-xxl gap-xl text-center">
-              {Object.values(nav_list).map((item, index) => (
-                <li className="text-dark text-subheading-regular font-squada-one nav-link" onClick={onLink}>
-                  <Link href={item.href}>{item.name}</Link>
+              {Object.entries(nav_list).map(([key,value], index) => (
+                <li className="text-dark text-subheading-regular font-squada-one nav-link">
+                  <div className="relative" >
+                      {value.sub_menu ? (<button key={key} onClick={()=>{onNavSubMenuEnter(key)}}>{value.name}</button>) : (<Link className="flex flex-col items-center" onClick={onLink} href={value.href}>{value.name} <div className={pathname == value.href ? 'border-b-4 m-x-auto border-primary w-6/12' : ''}></div></Link>)}
+                        {value.sub_menu && activeSubmenu===value.name && isSubMenuOpen &&  (
+                          <ul onClick={onLink} className=" bg-surface-color p-2 rounded-md navbar-submenu-wrapper overflow-hidden">
+                            {value.sub_menu.map((subMenuItem, subIndex) => (
+                              <li key={subIndex} onClick={()=>{setIsSubMenuOpen(!isSubMenuOpen); setActiveSubmenu('')}} className="my-3">
+                                <Link className="flex flex-col items-center" href={subMenuItem.href}>{subMenuItem.name}<div className={pathname == subMenuItem.href ? 'border-b-4 m-x-auto border-primary w-6/12' : ''}></div></Link>
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                    </div>
                 </li>
               ))}
             </ul>
@@ -236,38 +217,3 @@ function Navbar() {
 }
 
 export default Navbar
-
-
-// {/* <ul className="flex-row justify-around font-squada-one text-dark-text hidden xl:flex">
-//   {/* {Object.values(nav_list).map((item, index) => (
-//     'sub_menu' in item ? (
-//       <li className={` nav-link text-subheading-regular h-0 ${pathname === item.href ? 'active' : ''}`} key={index}>
-//         <button className="px-8 text-center" onClick={()=>{setActiveSubMenu(!isActiveSubMenu); subMenus = index;}}>{item.name}</button>
-//         {isActiveSubMenu && get_subMenu()}
-//       </li>
-//     ) : (
-//       <li className={`px-8 nav-link text-subheading-regular ${pathname === item.href ? 'active' : ''}`} key={index}>
-//         <Link href={item.href}>{item.name}</Link>
-//       </li>
-//     )
-// ))} */}
-//     {
-//       Object.values(nav_list).map((item, index) => (
-//         // <li className={`px-8 nav-link text-subheading-regular h-0 ${pathname === item.href ? 'active' : ''}`} key={index}>
-//         //   {
-//         //     ('sub_menu' in item) ? (<button className="px-8 text-center" onClick={onNavLinkClick}>{item.name}</button>) : (<Link href={item.href}>{item.name}</Link>)
-//         //   }
-//         // </li>
-//             'sub_menu' in item ? (
-//             <li className={` nav-link text-subheading-regular h-0 ${pathname === item.href ? 'active' : ''}`} key={index}>
-//               <button className="px-8 text-center" onClick={onNavLinkClick}>{item.name}</button>
-//               {isSubMenuOpen && get_subMenu()}
-//             </li>
-//           ) : (
-//             <li className={`px-8 nav-link text-subheading-regular ${pathname === item.href ? 'active' : ''}`} key={index}>
-//               <Link href={item.href}>{item.name}</Link>
-//             </li>
-//           )
-//       ))
-//     }
-// </ul> */}
